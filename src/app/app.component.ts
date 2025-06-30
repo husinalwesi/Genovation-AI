@@ -1,21 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
-import { Sidebar, SidebarModule } from 'primeng/sidebar';
-import { MenubarModule } from 'primeng/menubar';
-import { ButtonModule } from 'primeng/button';
-import { AvatarModule } from 'primeng/avatar';
+import { MainContentComponent } from './modules/layout-components/main-content/main-content.component';
+import { MobileMenuBarComponent } from './modules/layout-components/mobile-menu-bar/mobile-menu-bar.component';
+import { SidebarComponent } from './modules/layout-components/sidebar/sidebar.component';
 
 const MOBILE_BREAKPOINT = 768;
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, SidebarModule, MenubarModule, ButtonModule, AvatarModule],
+  imports: [CommonModule, MainContentComponent, MobileMenuBarComponent, SidebarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
 export class AppComponent implements OnInit {
-  @ViewChild('sidebarRef') sidebarRef!: Sidebar;
+  @ViewChild('mainSidebarRef') mainSidebarRef!: SidebarComponent;
 
   isMobile = false;
   sidebarVisible = false;
@@ -35,7 +34,7 @@ export class AppComponent implements OnInit {
     this.isMobile = window.innerWidth < MOBILE_BREAKPOINT;
     this.sidebarVisible = !this.isMobile;
 
-    if (wasMobile !== this.isMobile && this.sidebarRef) this.sidebarRef.destroyModal();
+    if (wasMobile !== this.isMobile && this.mainSidebarRef) this.mainSidebarRef.destroyModal();
   }
 
   toggleSidebarWidth() {
@@ -45,4 +44,13 @@ export class AppComponent implements OnInit {
     this.sidebarVisible = false;
     setTimeout(() => (this.sidebarVisible = true));
   }
+
+  onMobileMenuClick() {
+    this.sidebarVisible = true;
+  }
+
+  onMenuHideEmitter(){
+    if(this.isMobile) this.sidebarVisible = false;
+  }
+
 }

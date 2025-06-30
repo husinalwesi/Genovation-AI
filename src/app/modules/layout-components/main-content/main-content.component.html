@@ -1,0 +1,11 @@
+<div
+  id="content"
+  class="pt-[62px] md:pt-0 md:ml-auto transition-[cubic-bezier(0,0,0.2,1)]"
+  [ngClass]="
+    expandedSidebar
+      ? 'w-full md:w-[calc(100%-304px)]'
+      : 'w-full md:w-[calc(100%-96px)]'
+  "
+>
+  <p>Content area — on desktop this is on the right side, on mobile below.</p>
+</div>

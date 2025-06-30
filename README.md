@@ -1,5 +1,13 @@
 The PrimeFlex CSS library is being sunset and will no longer receive active development or maintenance, this is why i will use tailwind with primeNG rather than primeFlex.
 
+
+
+✅ Common Breakpoints
+Device	Min Width	Max Width	CSS Media Query Example
+Mobile	0px	767px	@media (max-width: 767px)
+Tablet	768px	1023px	@media (min-width: 768px) and (max-width: 1023px)
+Desktop	1024px	∞	@media (min-width: 1024px)
+
 # GenovationAi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.

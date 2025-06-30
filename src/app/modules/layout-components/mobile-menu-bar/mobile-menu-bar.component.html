@@ -1,0 +1,25 @@
+<div class="md:hidden fixed w-full">
+  <p-menubar>
+    <ng-template pTemplate="start">
+      <div class="flex items-center gap-4">
+        <span>logo</span>
+        <div class="flex items-center gap-2">
+          <span>icon</span>
+          <span>Page Name</span>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <div class="flex items-center">
+        <p-avatar
+          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
+          shape="circle"
+        ></p-avatar>
+        <p-button
+          (onClick)="openMobileMenu()"
+          icon="pi pi-bars"
+        ></p-button>
+      </div>
+    </ng-template>
+  </p-menubar>
+</div>
