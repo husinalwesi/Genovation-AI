@@ -1,0 +1,13 @@
+#only-mob {
+  @apply md:hidden fixed w-full;
+}
+#content {
+  @apply w-full pt-[62px] md:pt-0 md:w-[calc(100%-96px)] md:ml-auto
+  transition-[cubic-bezier(0,0,0.2,1)];
+  &.full-view {
+    @apply w-full md:w-[calc(100%-304px)];
+  }
+}
+#only-desktop{
+  @apply hidden md:block;
+}

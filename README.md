@@ -1,3 +1,5 @@
+The PrimeFlex CSS library is being sunset and will no longer receive active development or maintenance, this is why i will use tailwind with primeNG rather than primeFlex.
+
 # GenovationAi
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.20.
