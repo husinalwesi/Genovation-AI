@@ -1,23 +1,26 @@
 <div class="md:hidden fixed w-full">
-  <p-menubar>
+  <p-menubar styleClass="bg-[#10141A] py-[19px] px-[15px] rounded-none">
     <ng-template pTemplate="start">
-      <div class="flex items-center gap-4">
-        <span>logo</span>
-        <div class="flex items-center gap-2">
-          <span>icon</span>
-          <span>Page Name</span>
+      <div class="flex items-center gap-[30px]">
+      <p-image src="images/logo/mobile-en.webp" alt="Image" width="64" height="60" class="w-16 h-[60px]" />
+        <div class="flex items-center gap-[5px]">
+          <p-chip styleClass="w-12 h-12 rounded-[15px] bg-[#00C5D6] text-[#252836] justify-center">
+            <i class="pi pi-apple text-[26px]"></i>
+          </p-chip>
+          <span class="text-[#00C5D6] Poppins font-bold text-xs poppins-bold">Dashboard</span>
         </div>
       </div>
     </ng-template>
     <ng-template pTemplate="end">
-      <div class="flex items-center">
+      <div class="flex items-center gap-[30px]">
         <p-avatar
-          image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png"
-          shape="circle"
+          image="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
+          styleClass="w-10 h-10 rounded-[15px] border-2 border-solid border-[#464353]"
         ></p-avatar>
         <p-button
           (onClick)="openMobileMenu()"
           icon="pi pi-bars"
+          styleClass="text-[#9E9BAD] text-[19px] w-7"
         ></p-button>
       </div>
     </ng-template>

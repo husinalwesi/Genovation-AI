@@ -1,24 +1,31 @@
-<p-sidebar
-  #sidebarRef
-  [(visible)]="sidebarVisible"
-  [position]="isMobile ? 'top' : 'left'"
-  [dismissible]="isMobile"
-  [closeOnEscape]="isMobile"
-  [modal]="isMobile"
-  [showCloseIcon]="isMobile"
-  [blockScroll]="isMobile"
-  [style]="{ width: isMobile ? '100%' : expandedSidebar ? '304px' : '96px' }"
-  (onHide)="onMenuHide()"
->
-  <ng-template pTemplate="header">
-    <span class="font-semibold text-xl">Logo inside menu</span>
-  </ng-template>
+<div id="sidebar-main" [class.expanded-sidebar]="expandedSidebar">
+    <p-sidebar
+    #sidebarRef
+    [(visible)]="sidebarVisible"
+    [position]="isMobile ? 'top' : 'left'"
+    [dismissible]="isMobile"
+    [closeOnEscape]="isMobile"
+    [modal]="isMobile"
+    [showCloseIcon]="isMobile"
+    [blockScroll]="isMobile"
+    [style]="{ width: isMobile ? '100%' : expandedSidebar ? '304px' : '96px' }"
+    styleClass="bg-[#10141A]"
+    (onHide)="onMenuHide()"
+  >
+    <ng-template pTemplate="header">
+      <p-image [src]="!isMobile && expandedSidebar ? 'images/logo/desktop-en.webp' : 'images/logo/mobile-en.webp'" alt="Image" width="64" height="60" class="md:mx-auto" 
+      [imageClass]="!isMobile && expandedSidebar ? 'w-[153px] h-[72px]' : 'w-16 h-[60px]'" />
+    </ng-template>
 
-  <button type="button" class="hidden md:block" (click)="toggleSidebarWidth()">
-    Toggle Sidebar Width (Desktop)
-  </button>
+    <p-button
+      (onClick)="toggleSidebarWidth()"
+      icon="pi pi-bars"
+      styleClass="hidden md:block w-full bg-[#1F1D2B] shadow-none mb-5 py-1 fill-white"
+    >
+  </p-button>
 
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-  </p>
-</p-sidebar>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+  </p-sidebar>
+</div>
