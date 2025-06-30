@@ -7,12 +7,12 @@
   [modal]="isMobile"
   [showCloseIcon]="isMobile"
   [blockScroll]="isMobile"
-  [style]="{ width: isMobile ? '100%' : fullView ? '304px' : '96px' }"
+  [style]="{ width: isMobile ? '100%' : expandedSidebar ? '304px' : '96px' }"
 >
   <ng-template pTemplate="header">
     <span class="font-semibold text-xl">Logo inside menu</span>
   </ng-template>
-  <button type="button" id="only-desktop" (click)="toggleDesktopMenu()">
+  <button type="button" class="hidden md:block" (click)="toggleSidebarWidth()">
     click me to resize only in desktop
   </button>
   <p>
@@ -24,7 +24,7 @@
 </p-sidebar>
 <div>
   <div>
-    <div id="only-mob">
+    <div class="md:hidden fixed w-full">
       <div>
         <p-menubar>
           <ng-template pTemplate="start">
@@ -53,7 +53,9 @@
       </div>
     </div>
   </div>
-  <div id="content" [class.full-view]="fullView">
+  <div id="content" class="pt-[62px] md:pt-0 md:ml-auto transition-[cubic-bezier(0,0,0.2,1)]" 
+  [ngClass]="expandedSidebar ? 'w-full md:w-[calc(100%-304px)]' : 'w-full md:w-[calc(100%-96px)]'"
+  >
     right side content in desktop
     <br />
     bottom content in mobile
