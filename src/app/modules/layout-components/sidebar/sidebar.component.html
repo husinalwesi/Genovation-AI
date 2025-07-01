@@ -35,6 +35,6 @@
     >
       <app-bars class="flex justify-center"></app-bars>
     </p-button>
-    <app-menu-items class="flex-1" (onCloseMobileMenu)="onCloseMobileMenuHandler()"></app-menu-items>
+    <app-menu-items class="flex-1" [expandedSidebar]="expandedSidebar" (onCloseMobileMenu)="onCloseMobileMenuHandler()"></app-menu-items>
   </p-sidebar>
 </div>

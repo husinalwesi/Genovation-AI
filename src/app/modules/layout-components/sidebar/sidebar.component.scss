@@ -14,4 +14,7 @@
             @apply md:pb-2.5;
         }
     }
+    &:not(.expanded-sidebar) .p-sidebar-content{
+        position: initial;
+    }
 }

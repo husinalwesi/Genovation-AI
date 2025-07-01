@@ -9,12 +9,14 @@ import { DashboardComponent } from '../../icons/dashboard/dashboard.component';
 import { OrganizationComponent } from '../../icons/organization/organization.component';
 import { ReportComponent } from '../../icons/report/report.component';
 import { UsersComponent } from '../../icons/users/users.component';
+import { InvoicesComponent } from '../../icons/invoices/invoices.component';
 
 export const componentMapper: { [key: string]: any } = {
   dashboard: DashboardComponent,
   report: ReportComponent,
   organization: OrganizationComponent,
   users: UsersComponent,  
+  invoices: InvoicesComponent
 };
 
 @Component({

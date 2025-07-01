@@ -127,6 +127,10 @@ body{
     @apply h-auto max-h-screen;
 }
 
+.p-sidebar-mask{
+  background-color: #252836B2 !important;
+}
+
 // @media only screen and (min-width: 768px){
 // .p-component-overlay.p-sidebar-mask{
 //     display: none;

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { CommonModule } from '@angular/common';
 import { PanelMenuModule } from 'primeng/panelmenu';
@@ -10,12 +10,14 @@ import { ReportComponent } from '../../icons/report/report.component';
 import { UsersComponent } from '../../icons/users/users.component';
 import { AvatarModule } from 'primeng/avatar';
 import { Router } from '@angular/router';
+import { InvoicesComponent } from '../../icons/invoices/invoices.component';
 
 export const componentMapper: { [key: string]: any } = {
   dashboard: DashboardComponent,
   report: ReportComponent,
   organization: OrganizationComponent,
   users: UsersComponent,  
+  invoices: InvoicesComponent
 };
 
 @Component({
@@ -27,6 +29,7 @@ export const componentMapper: { [key: string]: any } = {
 })
 export class MenuItemsComponent {
     @Output() onCloseMobileMenu: EventEmitter<any> = new EventEmitter();  
+    @Input() expandedSidebar: boolean = true;
     mapper = componentMapper;
     items: MenuItem[] = [
             {
@@ -44,6 +47,14 @@ export class MenuItemsComponent {
                 icon: 'organization',
                 expanded: true,
                 items: [
+                    {
+                        title: 'Assets'
+                    },                    
+                    {
+                        label: 'Invoices',
+                        icon: 'invoices',
+                        route: '/invoices'
+                    },
                     {
                         label: 'Users',
                         icon: 'users',
