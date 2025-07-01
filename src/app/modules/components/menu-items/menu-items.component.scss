@@ -1,0 +1,63 @@
+::ng-deep p-panelMenu{
+    & .p-panelmenu{
+        @apply h-full flex flex-col;
+        & > .p-panelmenu-panel{
+            @apply last:mt-14 md:last:mt-auto mb-8 md:mb-3 last:mb-0 md:last:mb-0 last:pointer-events-none;
+        }
+    }
+    // & .p-panelmenu-header-action{
+    //     @apply hidden;
+    // }
+
+    & .p-panelmenu-content{
+        @apply py-8 md:py-3;
+    }    
+
+    & .p-panelmenu-header-content,
+    & .p-panelmenu-content,
+    & .p-focus .p-menuitem-content{
+        @apply bg-transparent;
+    }
+
+    & .p-panelmenu .p-panelmenu-content .p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content:hover{
+        @apply bg-transparent;
+    }
+
+    & .p-submenu-list .menu-item{
+        @apply pl-[70px] md:pl-[45px];
+    }
+
+    & p-chip.menu-item-main-icon .p-chip svg .svg-fill{
+        @apply fill-[#706D7E];
+    }
+    & .p-panelmenu-header.p-highlight .menu-item{
+        & .menu-item-arrow{
+            @apply rotate-180;
+        }
+    }
+
+    // & .p-panelmenu-header.p-highlight .menu-item,
+    & .active-link{
+        & .menu-item-arrow{
+            @apply rotate-180 text-[#00C5D6];
+        }
+        & .menu-item-label{
+            @apply text-[#00C5D6] text-xs;      
+            // 
+            font-family: "Poppins", sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            // poppins-bold
+        }
+        & p-chip.menu-item-main-icon .p-chip{
+            @apply bg-[#00C5D6];
+            & svg .svg-fill{
+                @apply fill-[#252836];
+            }            
+            // & i {
+            //     // @apply text-[#252836];
+            //     // svg-fill
+            // }
+        }
+    }
+}

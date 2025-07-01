@@ -1,20 +1,20 @@
 <div class="md:hidden fixed w-full">
-  <p-menubar styleClass="bg-[#10141A] py-[19px] px-[15px] rounded-none">
+  <p-menubar styleClass="bg-[#10141A] py-[19px] px-[15px] rounded-none shadow-[16px_0px_30px_0px_#00000033]">
     <ng-template pTemplate="start">
       <div class="flex items-center gap-[30px]">
-      <p-image src="images/logo/mobile-en.webp" alt="Image" width="64" height="60" class="w-16 h-[60px]" />
-        <div class="flex items-center gap-[5px]">
+      <p-image src="images/logo/mobile-en.png" alt="Image" width="64" height="60" class="w-16 h-[60px]" />
+        <div class="flex items-center gap-[5px] flex-1">
           <p-chip styleClass="w-12 h-12 rounded-[15px] bg-[#00C5D6] text-[#252836] justify-center">
-            <i class="pi pi-apple text-[26px]"></i>
+            <ng-container *ngComponentOutlet="mapper['dashboard']"></ng-container>
           </p-chip>
-          <span class="text-[#00C5D6] Poppins font-bold text-xs poppins-bold">Dashboard</span>
+          <span class="text-[#00C5D6] Poppins font-bold text-xs poppins-bold line-clamp-2" style="word-break: break-word;">Dashboard</span>
         </div>
       </div>
     </ng-template>
     <ng-template pTemplate="end">
       <div class="flex items-center gap-[30px]">
         <p-avatar
-          image="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8aW1hZ2V8ZW58MHx8MHx8fDA%3D"
+          image="images/users/john-doe.png"
           styleClass="w-10 h-10 rounded-[15px] border-2 border-solid border-[#464353]"
         ></p-avatar>
         <p-button

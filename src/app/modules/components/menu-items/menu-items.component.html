@@ -1,0 +1,31 @@
+    <p-panelMenu [model]="items" class="w-full h-full block" styleClass="">
+        <ng-template pTemplate="item" let-item>
+            <div *ngIf="item.isSpecialItem" class="flex items-center gap-[15px] px-10 md:px-[15px] pb-[25px] md:pb-[30px]">
+                <p-avatar
+                [image]="item.userData.img"
+                styleClass="w-10 h-10 rounded-[15px] border-2 border-solid border-[#464353]"
+                ></p-avatar>
+                <div>
+                    <p class="text-sm text-[#CECBDE] poppins-bold">{{item.userData.name}}</p>
+                    <p class="text-sm text-[#CECBDE] poppins-regular">{{item.userData.role}}</p>
+                </div>
+            </div>
+            <a *ngIf="!item.isSpecialItem" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.route === '/'}" [routerLink]="item.route" (click)="closeMobileMenu(item.route)" class="menu-item flex items-center gap-5 px-10 md:pl-[15px] md:pr-[13px] py-[3px] cursor-pointer group">
+                <p-chip class="menu-item-main-icon" styleClass="w-8 h-8 rounded-[10px] transition-all bg-[#252836] text-[#252836] justify-center">
+                    <ng-container *ngComponentOutlet="mapper[item.icon]"></ng-container>
+                </p-chip>
+                <span class="poppins-regular text-[13px] text-[#706D7E] transition-all menu-item-label">
+                    {{ item.label }}
+                </span>
+                <i *ngIf="item.items" class="menu-item-arrow pi pi-angle-down text-[#706D7E] ml-auto transition-all"></i>
+
+
+                <button type="button" *ngIf="item.extraIconRoute" (click)="naviagateInnerURL($event, item.extraIconRoute)" class="ml-auto">
+                    <p-chip *ngIf="item.extraIcon" styleClass="w-7 h-7 rounded-lg bg-[#00C5D6] justify-center">
+                        <i class="text-[16.5px] text-white" [ngClass]="item.extraIcon"></i>
+                    </p-chip>                    
+                </button>
+
+            </a>
+        </ng-template>    
+    </p-panelMenu>

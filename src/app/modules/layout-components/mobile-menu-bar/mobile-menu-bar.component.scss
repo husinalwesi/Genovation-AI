@@ -1,3 +1,7 @@
 ::ng-deep p-avatar img{
     @apply object-cover w-full h-full rounded-[15px];
 }
+
+::ng-deep p-chip svg .svg-fill{
+    @apply fill-[#252836];
+}

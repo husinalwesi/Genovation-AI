@@ -1,12 +1,12 @@
 ::ng-deep #sidebar-main{
     & .p-sidebar-header{
-        @apply justify-between md:justify-normal px-[25px] md:px-0 pt-[25px] md:pt-[30px] pb-[30px] md:pb-5;
+        @apply justify-between md:justify-normal px-[25px] md:px-0 pt-[25px] md:pt-[30px] pb-[22px] md:pb-5;
         & .p-sidebar-close{
             @apply text-[#9E9BAD];
         }
     }
     & .p-sidebar-content{
-        @apply px-0 pb-0;
+        @apply px-0 pb-0 flex flex-col;
     }
     // 
     &.expanded-sidebar{

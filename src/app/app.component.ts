@@ -53,4 +53,8 @@ export class AppComponent implements OnInit {
     if(this.isMobile) this.sidebarVisible = false;
   }
 
+  onCloseMobileMenu(){
+    if(this.isMobile) this.sidebarVisible = false;    
+  }
+
 }
