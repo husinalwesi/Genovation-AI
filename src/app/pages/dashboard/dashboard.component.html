@@ -1,1 +1,14 @@
-<p>dashboard works!</p>
+<div class="px-[30px] py-5">
+    <div class="flex items-center gap-[17.5px]">
+        <div class="bg-[#1F1D2B] rounded-[15px] w-[136px] py-2.5 px-[15px]">
+            <div class="pb-5">
+                <p-chart type="doughnut" [plugins]="plugins" [data]="data" [options]="options" width="70px" height="70px" />
+            </div>
+            <p class="text-sm text-[#CECBDE] text-center pb-3">
+                <span class="poppins-bold">300/</span>
+                <span class="poppins-regular">302</span>
+            </p>
+            <p class="poppins-medium text-[#706D7E] text-xs leading-[14px] text-center">Active <br/> Trips</p>
+        </div>
+    </div>
+</div>
