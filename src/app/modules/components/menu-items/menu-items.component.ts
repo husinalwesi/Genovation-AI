@@ -29,7 +29,7 @@ export const componentMapper: { [key: string]: any } = {
 })
 export class MenuItemsComponent {
     @Output() onCloseMobileMenu: EventEmitter<any> = new EventEmitter();  
-    @Input() expandedSidebar: boolean = true;
+    @Input() collapsedSidebar: boolean = true;
     mapper = componentMapper;
     items: MenuItem[] = [
             {

@@ -1,4 +1,4 @@
-<div id="menu-items" class="h-full" [class.collapsed-sidebar]="!expandedSidebar">
+<div id="menu-items" class="h-full" [class.collapsed-sidebar]="collapsedSidebar">
 <p-panelMenu [model]="items" class="w-full h-full block" styleClass="">
         <ng-template pTemplate="item" let-item>
             <div *ngIf="item.isSpecialItem" class="flex items-center gap-[15px] px-10 md:px-[15px] pb-[25px] md:pb-[30px] user-container">
@@ -11,7 +11,7 @@
                     <p class="text-sm text-[#CECBDE] poppins-regular">{{item.userData.role}}</p>
                 </div>
             </div>
-            <div *ngIf="!item.isSpecialItem && item.title" class="sub-menu-title poppins-semibold text-base text-[#CECBDE] h-[69px] border-t border-b border-r border-solid border-[#464353] rounded-tr-[15px] items-center px-[11px]">
+            <div *ngIf="!item.isSpecialItem && item.title" class="sub-menu-title poppins-semibold text-base text-[#CECBDE] h-[69px] border-t border-b border-solid border-[#464353] rounded-tr-[15px] items-center px-[11px]">
                 {{item.title}}
             </div>
             <a *ngIf="!item.isSpecialItem && !item.title" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.route === '/'}" [routerLink]="item.route" (click)="closeMobileMenu(item.route)" [class.submenu-items]="item.items" class="menu-item flex items-center gap-5 px-10 md:pl-[15px] md:pr-[13px] py-[3px] cursor-pointer group">
