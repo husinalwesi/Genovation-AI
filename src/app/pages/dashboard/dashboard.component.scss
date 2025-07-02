@@ -1,0 +1,13 @@
+
+
+::ng-deep p-button{
+    & .p-button-label{
+        // .poppins-regular
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;        
+    }
+    & .p-button-icon{
+        @apply mr-3;
+    }
+}

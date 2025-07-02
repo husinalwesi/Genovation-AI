@@ -1,0 +1,48 @@
+::ng-deep p-sorticon{
+    & .p-sortable-column-badge{
+        @apply hidden;
+    }
+    & svg{
+        @apply text-[#464353];
+    }
+}
+::ng-deep p-table{
+    & th{
+        @apply bg-[#1F1D2B] py-[5px] px-2.5;
+    }
+    & th.status-field-th > div{
+        @apply justify-end;
+    }
+    & td{
+        @apply bg-[#252836] border-t border-b border-solid border-[#464353] py-3 px-[15px];
+    }    
+    & .vehicle-field{
+        @apply underline;
+    }
+    & .fleet-field{
+        @apply text-[#9E9BAD];
+        // .poppins-medium
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+        font-style: normal;
+    }
+}
+::ng-deep p-dropdown{
+    & .p-dropdown-label{
+        @apply pl-[5px] pr-0 py-1;
+    }    
+    & .p-dropdown-label,
+    & svg{
+        @apply text-[#CECBDE];
+    }
+    & .p-dropdown-trigger{
+        @apply px-3 w-auto;
+    }
+    & .p-highlight span{
+        @apply text-[#252836];
+    }
+}
+
+// ::ng-deep p-button{
+//     @apply mr-[initial];
+// }

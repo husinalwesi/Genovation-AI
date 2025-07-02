@@ -9,7 +9,7 @@
     [showCloseIcon]="isMobile"
     [blockScroll]="isMobile"
     [style]="{ width: isMobile ? '100%' : expandedSidebar ? '304px' : '96px' }"
-    styleClass="bg-[#10141A] shadow-[16px_0px_30px_0px_#00000033] md:shadow-[0px_16px_30px_0px_#0000004D]"
+    styleClass="bg-[#10141A] shadow-[16px_0px_30px_0px_#00000033] md:shadow-[0px_16px_30px_0px_#0000004D] z-10"
     (onHide)="onMenuHide()"
   >
     <ng-template pTemplate="header">

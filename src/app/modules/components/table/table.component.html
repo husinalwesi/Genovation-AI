@@ -1,0 +1,50 @@
+    <p-table [value]="table.body" [columns]="table.head" [reorderableColumns]="true" [tableStyle]="{'min-width': '50rem'}"
+     sortMode="multiple" [multiSortMeta]="multiSortMeta"
+    >
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th *ngFor="let col of columns" pReorderableColumn [pReorderableColumnDisabled]="!col.reorderable"
+                [ngClass]="col.field + '-field-th'">
+                    <div class="flex items-center gap-[5px]">
+                        <app-draggable *ngIf="col.reorderable"></app-draggable>
+                        <span class="text-sm text-[#9E9BAD] poppins-semibold">{{col.header}}</span>
+                        <p-sortIcon *ngIf="col.sortable" class="bg-transparent" [pSortableColumn]="col.field" [field]="col.field" />
+
+                        <p-button *ngIf="col.field === 'status'" styleClass="text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] w-10 h-10 rounded-[10px] flex items-center justify-center ml-[71px]">
+                            <app-columns-plus-left></app-columns-plus-left>
+                        </p-button>
+                    </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body"
+            let-rowData
+            let-columns="columns"
+            let-index="rowIndex">
+                <tr>
+                    <td *ngFor="let col of columns" class="text-sm poppins-regular text-[#CECBDE]">
+                        <ng-container *ngIf="col.field === 'status'">
+                            <form [formGroup]="form" class="text-right">
+                            <p-dropdown styleClass="bg-transparent border border-solid border-[#CECBDE] poppins-regular text-sm shadow-none" 
+                                [options]="cities" 
+                                formControlName="selectedCity" 
+                                placeholder="Select a status">
+                            </p-dropdown>
+                            </form>
+                        </ng-container>
+                        <ng-container *ngIf="col.field !== 'status'">
+                            <div class="flex items-center">
+                                <span class="vehicleType-field border border-solid border-[#9E9BAD] rounded-md text-[13px] text-[#9E9BAD] px-1 mr-2.5" *ngIf="col.field === 'vehicle'">{{rowData['vehicleType']}}</span>
+                                <app-lightning *ngIf="col.field === 'device'" class="device-pre-icon-field inline-block -ml-2.5"></app-lightning>
+
+                                <span *ngIf="col.field !== 'vehicle'" [ngClass]="col.field + '-field'" class="whitespace-pre-line" [innerHTML]="rowData[col.field]"></span>
+
+                                <a *ngIf="col.field === 'vehicle'" [routerLink]="rowData['vehicleLink']" [ngClass]="col.field + '-field'" class="whitespace-pre-line" [innerHTML]="rowData[col.field]"></a>
+
+                            </div>
+                            <p class="deviceNo-field tracking-[2.8px] -mt-1" *ngIf="col.field === 'device'">{{rowData['deviceNo']}}</p>                            
+                        </ng-container>
+                    </td>
+                </tr>
+        </ng-template>
+    </p-table>

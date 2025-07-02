@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
 import { DoughnutChartComponent } from "../../modules/components/doughnut-chart/doughnut-chart.component";
 import { CounterComponent } from "../../modules/components/counter/counter.component";
+import { InputGroupModule } from 'primeng/inputgroup';
+import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
+import { ButtonModule } from 'primeng/button';
+import { UserTimeComponent } from "../../modules/icons/user-time/user-time.component";
+import { TableComponent } from "../../modules/components/table/table.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DoughnutChartComponent, CounterComponent],
+  imports: [DoughnutChartComponent, CounterComponent, InputGroupModule, InputGroupAddonModule, ButtonModule, UserTimeComponent, TableComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
