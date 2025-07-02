@@ -9,7 +9,7 @@
     [showCloseIcon]="isMobile"
     [blockScroll]="isMobile"
     [style]="{ width: isMobile ? '100%' : expandedSidebar ? '304px' : '96px' }"
-    styleClass="bg-[#10141A] shadow-[16px_0px_30px_0px_#00000033] md:shadow-[0px_16px_30px_0px_#0000004D] z-10"
+    styleClass="bg-[#10141A] shadow-[16px_0px_30px_0px_#00000033] lg-exclude-ipad:shadow-[0px_16px_30px_0px_#0000004D] z-10"
     (onHide)="onMenuHide()"
   >
     <ng-template pTemplate="header">
@@ -22,7 +22,7 @@
         alt="Image"
         width="64"
         height="60"
-        class="md:mx-auto"
+        class="lg-exclude-ipad:mx-auto"
         [imageClass]="
           !isMobile && expandedSidebar ? 'w-[153px] h-[72px]' : 'w-16 h-[60px]'
         "
@@ -31,7 +31,7 @@
 
     <p-button
       (onClick)="toggleSidebarWidth()"
-      styleClass="hidden md:block w-full bg-[#1F1D2B] shadow-none mb-5 py-2.5 rounded-none"
+      styleClass="hidden lg-exclude-ipad:block w-full bg-[#1F1D2B] shadow-none mb-5 py-2.5 rounded-none"
     >
       <app-bars class="flex justify-center"></app-bars>
     </p-button>

@@ -1,6 +1,6 @@
 ::ng-deep #sidebar-main{
     & .p-sidebar-header{
-        @apply justify-between md:justify-normal px-[25px] md:px-0 pt-[25px] md:pt-[30px] pb-[22px] md:pb-5;
+        @apply justify-between lg-exclude-ipad:justify-normal px-[25px] lg-exclude-ipad:px-0 pt-[25px] lg-exclude-ipad:pt-[30px] pb-[22px] lg-exclude-ipad:pb-5;
         & .p-sidebar-close{
             @apply text-[#9E9BAD];
         }
@@ -11,7 +11,7 @@
     // 
     &.expanded-sidebar{
         & .p-sidebar-header{
-            @apply md:pb-2.5;
+            @apply lg-exclude-ipad:pb-2.5;
         }
     }
     &:not(.expanded-sidebar) .p-sidebar-content{

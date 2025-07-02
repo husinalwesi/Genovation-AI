@@ -8,7 +8,7 @@
 }
 ::ng-deep p-table{
     & th{
-        @apply bg-[#1F1D2B] py-[5px] px-2.5;
+        @apply bg-[#1F1D2B] py-[5px] px-2.5 whitespace-nowrap;
     }
     & th.status-field-th > div{
         @apply justify-end;
@@ -25,6 +25,10 @@
         font-family: "Poppins", sans-serif;
         font-weight: 500;
         font-style: normal;
+    }
+    & .gps-field,
+    & .deviceNo-field{
+        @apply whitespace-nowrap;
     }
 }
 ::ng-deep p-dropdown{

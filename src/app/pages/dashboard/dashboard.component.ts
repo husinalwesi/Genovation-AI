@@ -6,6 +6,7 @@ import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { ButtonModule } from 'primeng/button';
 import { UserTimeComponent } from "../../modules/icons/user-time/user-time.component";
 import { TableComponent } from "../../modules/components/table/table.component";
+import { SharedService } from '../../serives/shared.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -59,5 +60,18 @@ export class DashboardComponent {
       label: 'Total Drivers'
     }
   ];  
+  isExpanded: boolean = true;
+  isMobile: boolean = true;
+
+  constructor(
+    private sharedService: SharedService
+  ){}
+
+  ngOnInit(): void{
+    this.sharedService.sidebar$.subscribe((data: any) => {
+      this.isExpanded = data.isExpanded;
+      this.isMobile = data.isMobile;
+    });
+  }
 
 }

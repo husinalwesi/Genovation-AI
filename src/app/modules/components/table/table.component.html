@@ -39,7 +39,7 @@
 
                                 <span *ngIf="col.field !== 'vehicle'" [ngClass]="col.field + '-field'" class="whitespace-pre-line" [innerHTML]="rowData[col.field]"></span>
 
-                                <a *ngIf="col.field === 'vehicle'" [routerLink]="rowData['vehicleLink']" [ngClass]="col.field + '-field'" class="whitespace-pre-line" [innerHTML]="rowData[col.field]"></a>
+                                <a *ngIf="col.field === 'vehicle'" [routerLink]="rowData['vehicleLink']" [ngClass]="col.field + '-field'" class="whitespace-nowrap" [innerHTML]="rowData[col.field]"></a>
 
                             </div>
                             <p class="deviceNo-field tracking-[2.8px] -mt-1" *ngIf="col.field === 'device'">{{rowData['deviceNo']}}</p>                            

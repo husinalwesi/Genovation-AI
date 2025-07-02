@@ -5,8 +5,13 @@ module.exports = {
         "./src/**/*.{html,ts}"
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        'lg-exclude-ipad': { 'min': '1024.98px' },
+      }      
+    },
   },
-    plugins: []
+  plugins: []
+  // @media (min-width: 1024px) {
 }
 

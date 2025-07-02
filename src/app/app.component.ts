@@ -3,8 +3,9 @@ import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { MainContentComponent } from './modules/layout-components/main-content/main-content.component';
 import { MobileMenuBarComponent } from './modules/layout-components/mobile-menu-bar/mobile-menu-bar.component';
 import { SidebarComponent } from './modules/layout-components/sidebar/sidebar.component';
+import { SharedService } from './serives/shared.service';
 
-const MOBILE_BREAKPOINT = 768;
+const MOBILE_BREAKPOINT = 1024.98;
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,8 @@ export class AppComponent implements OnInit {
   sidebarVisible = false;
   expandedSidebar = true;
 
+  constructor(private sharedService: SharedService){}
+
   ngOnInit() {
     this.updateLayout();
   }
@@ -32,6 +35,7 @@ export class AppComponent implements OnInit {
   private updateLayout() {
     const wasMobile = this.isMobile;
     this.isMobile = window.innerWidth < MOBILE_BREAKPOINT;
+    this.updateSideBarExpandedObservable();
     this.sidebarVisible = !this.isMobile;
 
     if (wasMobile !== this.isMobile && this.mainSidebarRef) this.mainSidebarRef.destroyModal();
@@ -39,10 +43,18 @@ export class AppComponent implements OnInit {
 
   toggleSidebarWidth() {
     this.expandedSidebar = !this.expandedSidebar;
+    this.updateSideBarExpandedObservable();
 
     // Soft re-render
     this.sidebarVisible = false;
     setTimeout(() => (this.sidebarVisible = true));
+  }
+
+  updateSideBarExpandedObservable(){
+    this.sharedService.sidebar$.next({
+      isExpanded: this.expandedSidebar,
+      isMobile: this.isMobile
+    });
   }
 
   onMobileMenuClick() {

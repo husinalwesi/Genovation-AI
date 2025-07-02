@@ -2,7 +2,7 @@
     & .p-panelmenu{
         @apply h-full flex flex-col overflow-hidden;
         & > .p-panelmenu-panel{
-            @apply last:mt-14 md:last:mt-auto mb-8 md:mb-3 last:mb-0 md:last:mb-0 last:pointer-events-none;
+            @apply last:mt-14 lg-exclude-ipad:last:mt-auto mb-8 lg-exclude-ipad:mb-3 last:mb-0 lg-exclude-ipad:last:mb-0 last:pointer-events-none;
         }
     }
     & .sub-menu-title{
@@ -13,7 +13,7 @@
     // }
 
     & .p-panelmenu-content{
-        @apply  md:py-3;
+        @apply  lg-exclude-ipad:py-3;
     }    
 
     & .p-panelmenu-header-content,
@@ -27,9 +27,9 @@
     }
 
     & .p-submenu-list{
-        @apply flex flex-col gap-8 md:gap-4;
+        @apply flex flex-col gap-8 lg-exclude-ipad:gap-4;
         & .menu-item{
-            @apply pl-[70px] md:pl-[45px];
+            @apply pl-[70px] lg-exclude-ipad:pl-[45px];
         }
     }
 

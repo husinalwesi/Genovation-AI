@@ -1,17 +1,23 @@
-<div class="px-[30px] py-5">
-    <div class="flex flex-wrap items-center gap-[17.5px]">
+<div class="px-[23px] lg-exclude-ipad:px-[30px] py-5">
+    <!-- <p class="text-white">isExpanded: {{isExpanded}}</p>
+    <p class="text-white">isMobile: {{isMobile}}</p> -->
+    <div class="flex flex-wrap items-center gap-4 xl:justify-between xl:flex-nowrap">
         @for (item of doughnutCharts; track $index) {
-            <div>
+            <div class="w-[calc((100%/3)-11px)] xl:w-[calc(100%/9)]">
                 <app-doughnut-chart [input]="item"></app-doughnut-chart>
             </div>
         }
+        <!-- max-w-[136px] -->
         @for (item of counters; track $index) {
-            <div>
+            <div class="w-[calc((100%/3)-11px)] lg-exclude-ipad:w-[calc((100%/6)-14px)] xl:w-[calc(100%/9)]">
                 <app-counter [input]="item"></app-counter>
             </div>
         }        
     </div>
-    <div class="flex items-center gap-[15px] pt-[30px] pb-5">
+    <div class="lg-exclude-ipad:hidden">
+        <p class="text-lg text-[#CECBDE] poppins-bold pt-[54px]">Shifts</p>
+    </div>
+    <div class="flex items-center gap-[15px] pt-[15px] lg-exclude-ipad:pt-[30px] pb-[60px] lg-exclude-ipad:pb-5">
         <p-inputGroup>
             <p-inputGroupAddon class="bg-[#1F1D2B] rounded-l-[10px] p-0">
                 <p-button styleClass="p-[10.5px] ml-[5px] pr-2.5 shadow-none">
@@ -21,8 +27,8 @@
             <input pInputText placeholder="Search" class="bg-[#1F1D2B] text-sm placeholder:text-[#706D7E] text-[#CECBDE] poppins-regular outline-0 rounded-r-[10px] w-full" />
         </p-inputGroup>
 
-        <p-button icon="pi pi-download" label="Export" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px]" />
-        <p-button icon="pi pi-upload" label="Import" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px]" />
+        <p-button icon="pi pi-download" label="Export" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
+        <p-button icon="pi pi-upload" label="Import" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
     </div>
 
     <div class="flex items-center gap-5 px-[15px] pb-5">
