@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from '../../serives/shared.service';
 
 @Component({
   selector: 'app-not-found',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './not-found.component.scss'
 })
 export class NotFoundComponent {
-
+  constructor(
+    private sharedService: SharedService
+  ){
+    this.sharedService.currentPageMeta$.next({label: 'Dashboard', icon: 'dashboard'});
+  }
 }

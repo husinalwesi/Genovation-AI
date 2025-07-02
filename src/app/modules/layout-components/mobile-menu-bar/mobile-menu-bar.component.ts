@@ -10,6 +10,7 @@ import { OrganizationComponent } from '../../icons/organization/organization.com
 import { ReportComponent } from '../../icons/report/report.component';
 import { UsersComponent } from '../../icons/users/users.component';
 import { InvoicesComponent } from '../../icons/invoices/invoices.component';
+import { SharedService } from '../../../serives/shared.service';
 
 export const componentMapper: { [key: string]: any } = {
   dashboard: DashboardComponent,
@@ -27,9 +28,22 @@ export const componentMapper: { [key: string]: any } = {
   styleUrl: './mobile-menu-bar.component.scss'
 })
 export class MobileMenuBarComponent {
+  metaData: any = {
+    label: null,
+    icon: null
+  };
+
   @Output() onMobileMenuClick: EventEmitter<any> = new EventEmitter();  
   @Input() sidebarVisible = false;
   mapper = componentMapper;
+
+  constructor(
+    private sharedService: SharedService
+  ){
+    this.sharedService.currentPageMeta$.subscribe((data: any) => {
+      this.metaData = data;
+    });
+  }
 
   openMobileMenu(){
     this.onMobileMenuClick.emit();

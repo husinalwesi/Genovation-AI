@@ -65,7 +65,9 @@ export class DashboardComponent {
 
   constructor(
     private sharedService: SharedService
-  ){}
+  ){
+    this.sharedService.currentPageMeta$.next({label: 'Dashboard', icon: 'dashboard'});
+  }
 
   ngOnInit(): void{
     this.sharedService.sidebar$.subscribe((data: any) => {

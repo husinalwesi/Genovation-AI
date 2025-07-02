@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from '../../serives/shared.service';
 
 @Component({
   selector: 'app-report',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './report.component.scss'
 })
 export class ReportComponent {
-
+  constructor(
+    private sharedService: SharedService
+  ){
+    this.sharedService.currentPageMeta$.next({label: 'Report', icon: 'report'});
+  }
 }

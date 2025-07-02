@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SharedService } from '../../serives/shared.service';
 
 @Component({
   selector: 'app-invoices',
@@ -8,5 +9,9 @@ import { Component } from '@angular/core';
   styleUrl: './invoices.component.scss'
 })
 export class InvoicesComponent {
-
+  constructor(
+    private sharedService: SharedService
+  ){
+    this.sharedService.currentPageMeta$.next({label: 'Invoices', icon: 'invoices'});
+  }
 }

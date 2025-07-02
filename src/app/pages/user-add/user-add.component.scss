@@ -1,0 +1,44 @@
+::ng-deep p-button{
+    & .action-btn .p-button-icon{
+        @apply mr-[15px];
+    }
+    & .p-button-label{
+        // .poppins-regular
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        font-style: normal;        
+    }
+
+    &.uploader .p-button-icon{
+        @apply mr-[18px];
+    }
+}
+
+::ng-deep .p-invalid {
+    border-color: #f87171;
+}
+::ng-deep p-dropdown{
+    & .p-dropdown-label{
+        @apply pl-[15px] pr-0 py-1;
+    }    
+    & .p-dropdown-label{
+        @apply text-[#CECBDE];
+    }
+    & svg{
+        @apply text-[#706D7E];
+    }
+    & .p-dropdown-trigger{
+        @apply px-3 w-auto;
+    }
+    & .p-highlight span{
+        @apply text-[#252836];
+    }
+}
+
+::ng-deep .p-inputswitch-slider{
+    @apply w-[30px] h-[18px] bg-[#00C5D6] before:bg-[#252836] before:w-2.5 before:h-2.5 shadow-none before:top-[14px];
+}
+
+::ng-deep .p-inputswitch-checked .p-inputswitch-slider{
+    @apply before:ml-[-7px];
+}

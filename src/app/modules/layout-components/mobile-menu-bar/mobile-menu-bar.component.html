@@ -4,10 +4,10 @@
       <div class="flex items-center gap-[30px]">
       <p-image src="images/logo/mobile-en.png" alt="Image" width="64" height="60" class="w-16 h-[60px]" />
         <div class="flex items-center gap-[5px] flex-1">
-          <p-chip styleClass="w-12 h-12 rounded-[15px] bg-[#00C5D6] text-[#252836] justify-center">
-            <ng-container *ngComponentOutlet="mapper['dashboard']"></ng-container>
+          <p-chip *ngIf="metaData?.icon" styleClass="w-12 h-12 rounded-[15px] bg-[#00C5D6] text-[#252836] justify-center">
+            <ng-container *ngComponentOutlet="mapper[metaData?.icon]"></ng-container>
           </p-chip>
-          <span class="text-[#00C5D6] Poppins font-bold text-xs poppins-bold line-clamp-2" style="word-break: break-word;">Dashboard</span>
+          <span class="text-[#00C5D6] Poppins font-bold text-xs poppins-bold line-clamp-2" style="word-break: break-word;">{{metaData?.label}}</span>
         </div>
       </div>
     </ng-template>
