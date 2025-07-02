@@ -1,60 +1,58 @@
 import { Component } from '@angular/core';
-import { ChartModule } from 'primeng/chart';
+import { DoughnutChartComponent } from "../../modules/components/doughnut-chart/doughnut-chart.component";
+import { CounterComponent } from "../../modules/components/counter/counter.component";
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [ChartModule],
+  imports: [DoughnutChartComponent, CounterComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  data!: any;
-  options!: any;
-  plugins!: any;
+  doughnutCharts: any = [
+    {
+      value: 300,
+      outOf: 302,
+      label: 'Active \n Trips'
+    },
+    {
+      value: 375,
+      outOf: 500,
+      label: 'Active \n Vehicles'
+    },
+    {
+      value: 16,
+      outOf: 20,
+      label: 'Under \n Maintenance'
+    }    
+  ];
 
-  value = 75; // progress value in %
-  ngOnInit() {
-  const valueText = this.value;
-
-    this.plugins = [{
-    id: 'centerText',
-    afterDraw(chart:any) {
-      const { ctx, chartArea: { left, top, width, height } } = chart;
-      ctx.save();
-      ctx.font = '700 14px Poppins';
-      ctx.fillStyle = '#00C5D6';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(valueText + '%', left + width / 2, top + height / 2);
-      ctx.restore();
+  counters: any = [
+    {
+      value: 2,
+      label: 'In-Active Trips'
+    },
+    {
+      value: 100,
+      label: 'Stopped Vehicles'
+    },
+    {
+      value: 4,
+      label: 'Queue Maintenance'
+    },
+    {
+      value: 7,
+      label: 'Total Departments'
+    },
+    {
+      value: 60,
+      label: 'Total Fleets'
+    },
+    {
+      value: 300,
+      label: 'Total Drivers'
     }
-  }];
-    this.data = {
-      datasets: [
-        {
-          data: [this.value, 100 - this.value],
-          backgroundColor: ['#00C5D6B3', 'transparent'], // adjust as needed
-          borderWidth: 0, 
-          borderRadius: 50 // <-- Rounded ends here!  
-        }
-      ]
-    };
-
-    this.options = {
-      // radius: '50%',
-      cutout: '80%', // to make the ring thin (can adjust 70-90%)
-      // rotation: 0, // starts from top
-      // circumference: 360,
-      plugins: {
-        // legend: {
-        //   display: false,
-        // },
-        tooltip: {
-          enabled: false
-        }
-      }
-    };
-  }
+  ];  
 
 }
