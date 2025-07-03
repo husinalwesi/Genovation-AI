@@ -15,7 +15,7 @@
             <div *ngIf="!item.isSpecialItem && item.title" class="sub-menu-title poppins-semibold text-base text-[#CECBDE] h-[69px] border-t border-b border-solid border-[#464353] rounded-tr-[15px] items-center px-[11px]">
                 {{item.title}}
             </div>
-            <a *ngIf="!item.isSpecialItem && !item.title" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.route === '/'}" [routerLink]="item.route" (click)="closeMobileMenu(item.route)" [class.submenu-items]="item.items" class="menu-item flex items-center gap-5 px-10 lg-exclude-ipad:pl-[15px] lg-exclude-ipad:pr-[13px] py-[3px] cursor-pointer group" rel="nofollow">
+            <a *ngIf="!item.isSpecialItem && !item.title" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.route === '/'}" [routerLink]="item.route" [attr.href]="item.route" (click)="closeMobileMenu(item.route)" [class.submenu-items]="item.items" class="menu-item flex items-center gap-5 px-10 lg-exclude-ipad:pl-[15px] lg-exclude-ipad:pr-[13px] py-[3px] cursor-pointer group">
                 <p-chip class="menu-item-main-icon" styleClass="w-8 h-8 rounded-[10px] transition-all bg-[#252836] text-[#252836] justify-center">
                     <ng-container *ngComponentOutlet="mapper[item.icon]"></ng-container>
                 </p-chip>
@@ -25,7 +25,7 @@
                 <i *ngIf="item.items" class="menu-item-arrow pi pi-angle-down text-[#706D7E] ml-auto transition-all"></i>
 
 
-                <button type="button" *ngIf="item.extraIconRoute" (click)="naviagateInnerURL($event, item.extraIconRoute)" class="ml-auto">
+                <button aria-label="Plus" type="button" *ngIf="item.extraIconRoute" (click)="naviagateInnerURL($event, item.extraIconRoute)" class="ml-auto">
                     <p-chip *ngIf="item.extraIcon" styleClass="w-7 h-7 rounded-lg bg-[#00C5D6] justify-center">
                         <i class="text-[16.5px] text-white" [ngClass]="item.extraIcon"></i>
                     </p-chip>                    

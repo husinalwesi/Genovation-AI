@@ -21,7 +21,7 @@ import { DdlOption } from '../../interfaces/interface';
 import { ImgUploaderComponent } from '../../modules/components/img-uploader/img-uploader.component';
 import { ActionBarComponent } from '../../modules/components/action-bar/action-bar.component';
 
-const DEFAULT_IMG = 'images/users/john-doe.png';
+const DEFAULT_IMG = 'images/users/john-doe.webp';
 
 @Component({
   selector: 'app-user-add',

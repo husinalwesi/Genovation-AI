@@ -1,0 +1,14 @@
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+        <url>
+            <loc>https://genovation-ai.netlify.app</loc>
+            <changefreq>daily</changefreq>
+            <priority>1</priority>
+        </url>
+        <url>
+            <loc>https://genovation-ai.netlify.app/users/add</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+        </url>
+    </urlset>
+</sitemapindex>

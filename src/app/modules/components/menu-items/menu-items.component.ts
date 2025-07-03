@@ -69,7 +69,7 @@ export class MenuItemsComponent {
                 userData: {
                     name: 'John Doe',
                     role: 'Admin',
-                    img: 'images/users/john-doe.png'
+                    img: 'images/users/john-doe.webp'
                 }
             },            
     ];
