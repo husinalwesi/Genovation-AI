@@ -76,8 +76,10 @@ export class MenuItemsComponent {
 
     constructor(private router: Router) {}
 
-    ngOnInit() {
-    }
+    ngOnInit() {}
+
+    ngAfterViewInit() {
+    }    
 
     naviagateInnerURL(event:Event, url: string){
         event.preventDefault();

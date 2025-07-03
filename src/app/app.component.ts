@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   isMobile = false;
   sidebarVisible = false;
   expandedSidebar = true;
+  isAriaLabelHandled: boolean = false;
 
   constructor(private sharedService: SharedService){}
 
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit {
     this.sidebarVisible = !this.isMobile;
 
     if (wasMobile !== this.isMobile && this.mainSidebarRef) this.mainSidebarRef.destroyModal();
+    this.updateAriaLabel();
   }
 
   toggleSidebarWidth() {
@@ -50,6 +52,7 @@ export class AppComponent implements OnInit {
 
   onMobileMenuClick() {
     this.sidebarVisible = true;
+    this.updateAriaLabel();
   }
 
   onMenuHideEmitter(){
@@ -58,6 +61,44 @@ export class AppComponent implements OnInit {
 
   onCloseMobileMenu(){
     if(this.isMobile) this.sidebarVisible = false;    
+  }
+
+  updateAriaLabel(){
+    if(this.isAriaLabelHandled) return;
+    // This case is not handled in the official documentation
+    setTimeout(() => {
+      const listItems = document.querySelectorAll("p-panelmenusub > ul > li");
+      if (!listItems || listItems.length === 0) {
+        return;
+      }
+
+      listItems.forEach((item, index) => {
+        let text = '';
+
+        // Try to get text from .sub-menu-title
+        const titleEl = item.querySelector<HTMLElement>(".sub-menu-title");
+        if (titleEl) {
+          text = (titleEl.textContent || '').trim();
+        }
+
+        // Fallback: try to get text from .menu-item-label
+        if (!text) {
+          const labelEl = item.querySelector<HTMLElement>(".menu-item-label");
+          if (labelEl) {
+            text = (labelEl.textContent || '').trim();
+          }
+        }
+
+        // Final fallback: use 'item' + index
+        if (!text) {
+          text = `item${index}`;
+        }
+
+        item.setAttribute("aria-label", text);
+      });
+
+      this.isAriaLabelHandled = true;
+    });
   }
 
 }
