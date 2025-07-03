@@ -5,7 +5,7 @@
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-right w-full">
         <p-inputGroup>
             <p-inputGroupAddon class="bg-[#1F1D2B] rounded-l-[10px] p-0">
-                <p-button styleClass="p-[10.5px] ml-[5px] pr-2.5" type="submit">
+                <p-button styleClass="p-[10.5px] ml-[5px] pr-2.5" type="submit" ariaLabel="Search">
                     <i class="pi pi-search text-[19px] text-[#CECBDE]"></i>
                 </p-button>
             </p-inputGroupAddon>
@@ -13,8 +13,8 @@
         </p-inputGroup>
     </form>
 
-    <p-button icon="pi pi-download" label="Export" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
-    <p-button icon="pi pi-upload" label="Import" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
+    <p-button icon="pi pi-download" ariaLabel="Export" label="Export" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
+    <p-button icon="pi pi-upload" ariaLabel="Import" label="Import" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
 </div>
 
 @for (shift of shifts; track $index) {

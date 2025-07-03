@@ -118,4 +118,7 @@
       }
     }
   }
+  & .user-img img{
+    @apply rounded-[15px];
+  }
 }

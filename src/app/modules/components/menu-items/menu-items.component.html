@@ -4,7 +4,8 @@
             <div *ngIf="item.isSpecialItem" class="flex items-center gap-[15px] px-10 lg-exclude-ipad:px-[15px] pb-[25px] lg-exclude-ipad:pb-[30px] user-container">
                 <p-avatar
                 [image]="item.userData.img"
-                styleClass="w-10 h-10 rounded-[15px] border-2 border-solid border-[#464353]"
+                styleClass="w-10 h-10 rounded-[15px] border-2 border-solid border-[#464353] user-img"
+                ariaLabel="User image"
                 ></p-avatar>
                 <div class="user-details">
                     <p class="text-sm text-[#CECBDE] poppins-bold">{{item.userData.name}}</p>
@@ -14,7 +15,7 @@
             <div *ngIf="!item.isSpecialItem && item.title" class="sub-menu-title poppins-semibold text-base text-[#CECBDE] h-[69px] border-t border-b border-solid border-[#464353] rounded-tr-[15px] items-center px-[11px]">
                 {{item.title}}
             </div>
-            <a *ngIf="!item.isSpecialItem && !item.title" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.route === '/'}" [routerLink]="item.route" (click)="closeMobileMenu(item.route)" [class.submenu-items]="item.items" class="menu-item flex items-center gap-5 px-10 lg-exclude-ipad:pl-[15px] lg-exclude-ipad:pr-[13px] py-[3px] cursor-pointer group">
+            <a *ngIf="!item.isSpecialItem && !item.title" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.route === '/'}" [routerLink]="item.route" (click)="closeMobileMenu(item.route)" [class.submenu-items]="item.items" class="menu-item flex items-center gap-5 px-10 lg-exclude-ipad:pl-[15px] lg-exclude-ipad:pr-[13px] py-[3px] cursor-pointer group" rel="nofollow">
                 <p-chip class="menu-item-main-icon" styleClass="w-8 h-8 rounded-[10px] transition-all bg-[#252836] text-[#252836] justify-center">
                     <ng-container *ngComponentOutlet="mapper[item.icon]"></ng-container>
                 </p-chip>
