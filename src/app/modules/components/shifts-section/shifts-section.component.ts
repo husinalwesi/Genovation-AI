@@ -26,11 +26,11 @@ export class ShiftsSectionComponent {
     });
   }  
 
-  onSubmit() {
-    console.log('submitted');
-    console.log('Search value:', this.form.get('search')?.value);
-    this.messageService.add({ severity: 'contrast', summary: 'Search', detail: 'Results have been loaded successfully.', life: 3000 });
-  }
+  // onSubmit() {
+  //   console.log('submitted');
+  //   console.log('Search value:', this.form.get('search')?.value);
+  //   this.messageService.add({ severity: 'contrast', summary: 'Search', detail: 'Results have been loaded successfully.', life: 3000 });
+  // }
 
   import(){
     this.messageService.add({ severity: 'contrast', summary: 'Upload Completed', detail: 'Your file has been successfully uploaded.', life: 3000 });

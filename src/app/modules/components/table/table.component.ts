@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, Input, SimpleChanges } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { DraggableComponent } from '../../icons/draggable/draggable.component';
 import { LightningComponent } from '../../icons/lightning/lightning.component';
@@ -19,6 +19,7 @@ import { MessageService } from 'primeng/api';
   styleUrl: './table.component.scss',
 })
 export class TableComponent {
+  @Input() searchKeyword: string = '';
   @Input() tableBody: VehicleTableRow[] = [];
   statusList: DdlOption[] = [
     { label: 'Active', value: 'active' },
@@ -68,11 +69,33 @@ export class TableComponent {
   }
 
   ngOnInit() {
-    this.table.body = this.tableBody;
+    this.filterData();
+  }
+
+  ngOnChanges(changes: SimpleChanges){
+    if(!changes['searchKeyword'].firstChange) this.filterData();
   }
 
   ddlChange(){
     this.messageService.add({ severity: 'contrast', summary: 'Status Updated', detail: 'The status has been changed successfully.', life: 3000 });
   }
+
+  filterData() {
+    if (!this.searchKeyword || this.searchKeyword.trim() === '') {
+      // If search is empty, show all data
+      this.table.body = this.tableBody;
+      return;
+    }
+
+    const keyword = this.searchKeyword.toLowerCase();
+
+    this.table.body = this.tableBody.filter(row => {
+      // Check if any value in the row includes the keyword
+      return Object.values(row).some(val => 
+        typeof val === 'string' && val.toLowerCase().includes(keyword)
+      );
+    });
+  }
+
 
 }

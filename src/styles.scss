@@ -25,6 +25,10 @@ input {
   @apply shadow-none;
 }
 
+button, a{
+  @apply transition-all hover:opacity-80;
+}
+
 .p-sidebar-top {
   @apply h-auto max-h-screen;
 }

@@ -91,17 +91,17 @@ export class DashboardComponent {
   }
 
   private getMockTableData(): VehicleTableRow[] {
-    return Array.from({ length: 5 }, () => ({
-      vehicleType: 'SUV',
-      vehicle: 'Bus-9265',
+    return Array.from({ length: 5 }, (item: VehicleTableRow, index: number) => ({
+      vehicleType: 'SUV-' + index,
+      vehicle: 'Bus-9265-' + index,
       vehicleLink: '/report',
-      plateNum: '04321',
-      odometer: '55,956 KM',
-      gps: '3-Nov-2024 &nbsp; 13:05:50',
-      device: 'Teltonika',
-      deviceNo: 'C03-96321',
-      sim: 'Allowance \n 1.5GB',
-      fleet: 'Q22',
+      plateNum: '04321-' + index,
+      odometer: '55,956 KM-' + index,
+      gps: '3-Nov-2024 &nbsp; 13:05:50-' + index,
+      device: 'Teltonika-' + index,
+      deviceNo: 'C03-96321-' + index,
+      sim: 'Allowance \n 1.5GB-' + index,
+      fleet: 'Q22-' + index,
       status: 'Active'
     }));
   }  

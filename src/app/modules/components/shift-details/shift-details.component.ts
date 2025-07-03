@@ -12,4 +12,5 @@ import { ShiftData } from '../../../interfaces/interface';
 })
 export class ShiftDetailsComponent {
   @Input() data!: ShiftData;
+  @Input() searchKeyword: string = '';
 }

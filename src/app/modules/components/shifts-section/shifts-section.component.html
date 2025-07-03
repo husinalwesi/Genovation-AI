@@ -2,10 +2,12 @@
     <p class="text-lg text-[#CECBDE] poppins-bold pt-[54px]">Shifts</p>
 </div>
 <div class="flex items-center gap-[15px] pt-[15px] lg-exclude-ipad:pt-[30px] pb-[60px] lg-exclude-ipad:pb-5">
-    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-right w-full">
+    <form [formGroup]="form" class="text-right w-full">
+        <!-- (ngSubmit)="onSubmit()" -->
         <p-inputGroup>
             <p-inputGroupAddon class="bg-[#1F1D2B] rounded-l-[10px] p-0">
-                <p-button styleClass="p-[10.5px] ml-[5px] pr-2.5" type="submit" ariaLabel="Search">
+                <!-- type="submit" -->
+                <p-button styleClass="p-[10.5px] ml-[5px] pr-2.5" type="button" ariaLabel="Search">
                     <i class="pi pi-search text-[19px] text-[#CECBDE]"></i>
                 </p-button>
             </p-inputGroupAddon>
@@ -18,5 +20,5 @@
 </div>
 
 @for (shift of shifts; track $index) {
-    <app-shift-details [data]="shift" class="block mb-[60px] border-b border-[#464353] border-dashed last:mb-0 last:border-b-0"></app-shift-details>
+    <app-shift-details [data]="shift" [searchKeyword]="form.get('search')?.value" class="block mb-[60px] border-b border-[#464353] border-dashed last:mb-0 last:border-b-0"></app-shift-details>
 }
