@@ -4,13 +4,15 @@
   >
     <ng-template pTemplate="start">
       <div class="flex items-center gap-[30px]">
-        <p-image
-          src="images/logo/mobile-en.webp"
-          alt="Logo"
-          width="64"
-          height="60"
-          class="w-16 h-[60px]"
-        />
+        <a routerLink="/">
+          <p-image
+            src="images/logo/mobile-en.webp"
+            alt="Logo"
+            width="64"
+            height="60"
+            class="w-16 h-[60px]"
+          />
+        </a>
         <div class="flex items-center gap-[5px] flex-1">
           <p-chip
             *ngIf="metaData?.icon"

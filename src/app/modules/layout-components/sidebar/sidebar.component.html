@@ -13,20 +13,23 @@
     (onHide)="onMenuHide()"
   >
     <ng-template pTemplate="header">
-      <p-image
-        [src]="
-          !isMobile && expandedSidebar
-            ? 'images/logo/desktop-en.webp'
-            : 'images/logo/mobile-en.webp'
-        "
-        alt="Logo"
-        width="64"
-        height="60"
-        class="lg-exclude-ipad:mx-auto"
-        [imageClass]="
-          !isMobile && expandedSidebar ? 'w-[153px] h-[72px]' : 'w-16 h-[60px]'
-        "
-      />
+      <a routerLink="/" class="lg-exclude-ipad:mx-auto">
+        <p-image
+          [src]="
+            !isMobile && expandedSidebar
+              ? 'images/logo/desktop-en.webp'
+              : 'images/logo/mobile-en.webp'
+          "
+          alt="Logo"
+          width="64"
+          height="60"
+          [imageClass]="
+            !isMobile && expandedSidebar
+              ? 'w-[153px] h-[72px]'
+              : 'w-16 h-[60px]'
+          "
+        />
+      </a>
     </ng-template>
 
     <p-button
@@ -36,6 +39,10 @@
     >
       <app-bars class="flex justify-center"></app-bars>
     </p-button>
-    <app-menu-items class="flex-1" [collapsedSidebar]="!expandedSidebar && !isMobile" (onCloseMobileMenu)="onCloseMobileMenuHandler()"></app-menu-items>
+    <app-menu-items
+      class="flex-1"
+      [collapsedSidebar]="!expandedSidebar && !isMobile"
+      (onCloseMobileMenu)="onCloseMobileMenuHandler()"
+    ></app-menu-items>
   </p-sidebar>
 </div>

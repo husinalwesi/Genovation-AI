@@ -5,11 +5,12 @@ import { ImageModule } from 'primeng/image';
 import { ButtonModule } from 'primeng/button';
 import { MenuItemsComponent } from "../../components/menu-items/menu-items.component";
 import { BarsComponent } from "../../icons/bars/bars.component";
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, SidebarModule, ImageModule, ButtonModule, MenuItemsComponent, BarsComponent],
+  imports: [CommonModule, SidebarModule, ImageModule, ButtonModule, MenuItemsComponent, BarsComponent, RouterLink],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

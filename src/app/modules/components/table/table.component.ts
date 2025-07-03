@@ -9,6 +9,7 @@ import { RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { ColumnsPlusLeftComponent } from '../../icons/columns-plus-left/columns-plus-left.component';
 import { ColumnConfig, DdlOption, SortMeta, TableConfig, VehicleTableRow } from '../../../interfaces/interface';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-table',
@@ -58,7 +59,9 @@ export class TableComponent {
     { field: 'plateNum', order: -1 },
   ];  
 
-  constructor() {
+  constructor(
+    private messageService: MessageService
+  ) {
     this.form = new FormGroup({
       selectedStatus: new FormControl('active'),
     });
@@ -67,4 +70,9 @@ export class TableComponent {
   ngOnInit() {
     this.table.body = this.tableBody;
   }
+
+  ddlChange(){
+    this.messageService.add({ severity: 'contrast', summary: 'Status Updated', detail: 'The status has been changed successfully.', life: 3000 });
+  }
+
 }

@@ -4,15 +4,18 @@ import { MainContentComponent } from './modules/layout-components/main-content/m
 import { MobileMenuBarComponent } from './modules/layout-components/mobile-menu-bar/mobile-menu-bar.component';
 import { SidebarComponent } from './modules/layout-components/sidebar/sidebar.component';
 import { SharedService } from './serives/shared.service';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 const MOBILE_BREAKPOINT = 1024.98;
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, MainContentComponent, MobileMenuBarComponent, SidebarComponent],
+  imports: [CommonModule, MainContentComponent, MobileMenuBarComponent, SidebarComponent, ToastModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
+  providers: [MessageService]
 })
 export class AppComponent implements OnInit {
   @ViewChild('mainSidebarRef') mainSidebarRef!: SidebarComponent;

@@ -13,8 +13,8 @@
         </p-inputGroup>
     </form>
 
-    <p-button icon="pi pi-download" ariaLabel="Export" label="Export" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
-    <p-button icon="pi pi-upload" ariaLabel="Import" label="Import" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
+    <p-button icon="pi pi-download" (onClick)="export()" ariaLabel="Export" label="Export" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
+    <p-button icon="pi pi-upload" (onClick)="import()" ariaLabel="Import" label="Import" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
 </div>
 
 @for (shift of shifts; track $index) {
