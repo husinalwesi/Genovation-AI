@@ -1,20 +1,19 @@
-::ng-deep #sidebar-main{
-    & .p-sidebar-header{
-        @apply justify-between lg-exclude-ipad:justify-normal px-[25px] lg-exclude-ipad:px-0 pt-[25px] lg-exclude-ipad:pt-[30px] pb-[22px] lg-exclude-ipad:pb-5;
-        & .p-sidebar-close{
-            @apply text-[#9E9BAD];
-        }
+::ng-deep #sidebar-main {
+  & .p-sidebar-header {
+    @apply justify-between lg-exclude-ipad:justify-normal px-[25px] lg-exclude-ipad:px-0 pt-[25px] lg-exclude-ipad:pt-[30px] pb-[22px] lg-exclude-ipad:pb-5;
+    & .p-sidebar-close {
+      @apply text-[#9E9BAD];
     }
-    & .p-sidebar-content{
-        @apply px-0 pb-0 flex flex-col;
+  }
+  & .p-sidebar-content {
+    @apply px-0 pb-0 flex flex-col;
+  }
+  &.expanded-sidebar {
+    & .p-sidebar-header {
+      @apply lg-exclude-ipad:pb-2.5;
     }
-    // 
-    &.expanded-sidebar{
-        & .p-sidebar-header{
-            @apply lg-exclude-ipad:pb-2.5;
-        }
-    }
-    &:not(.expanded-sidebar) .p-sidebar-content{
-        position: initial;
-    }
+  }
+  &:not(.expanded-sidebar) .p-sidebar-content {
+    @apply static;
+  }
 }

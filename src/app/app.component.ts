@@ -35,7 +35,6 @@ export class AppComponent implements OnInit {
   private updateLayout() {
     const wasMobile = this.isMobile;
     this.isMobile = window.innerWidth < MOBILE_BREAKPOINT;
-    this.updateSideBarExpandedObservable();
     this.sidebarVisible = !this.isMobile;
 
     if (wasMobile !== this.isMobile && this.mainSidebarRef) this.mainSidebarRef.destroyModal();
@@ -43,18 +42,10 @@ export class AppComponent implements OnInit {
 
   toggleSidebarWidth() {
     this.expandedSidebar = !this.expandedSidebar;
-    this.updateSideBarExpandedObservable();
 
     // Soft re-render
     this.sidebarVisible = false;
     setTimeout(() => (this.sidebarVisible = true));
-  }
-
-  updateSideBarExpandedObservable(){
-    this.sharedService.sidebar$.next({
-      isExpanded: this.expandedSidebar,
-      isMobile: this.isMobile
-    });
   }
 
   onMobileMenuClick() {

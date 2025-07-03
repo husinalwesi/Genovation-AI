@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { CounterData } from '../../../interfaces/interface';
 
 @Component({
   selector: 'app-counter',
@@ -8,7 +9,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './counter.component.scss'
 })
 export class CounterComponent {
-  @Input() input: any = {
+  @Input() input: CounterData = {
     value: 0,
     label: ''
   };

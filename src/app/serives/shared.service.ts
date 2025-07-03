@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { PageMeta } from '../interfaces/interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SharedService {
-  public sidebar$ = new BehaviorSubject<any>({isExpanded: true,isMobile: false});
-  public currentPageMeta$ = new BehaviorSubject<any>({
+  public currentPageMeta$ = new BehaviorSubject<PageMeta>({
     label: null,
     icon: null
   });  

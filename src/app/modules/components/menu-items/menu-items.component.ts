@@ -79,7 +79,7 @@ export class MenuItemsComponent {
     ngOnInit() {
     }
 
-    naviagateInnerURL(event:any, url: string){
+    naviagateInnerURL(event:Event, url: string){
         event.preventDefault();
         event.stopPropagation();
         this.router.navigate([url]);

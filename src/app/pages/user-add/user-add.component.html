@@ -1,140 +1,288 @@
-<form [formGroup]="exampleForm" (ngSubmit)="onSubmit()" class="w-full">
-    <div class="px-4">
-        <div class="pt-[25px] pb-[15px] border-b border-solid border-[#464353] flex items-center justify-between mb-10">
-            <div class="px-4 flex items-center gap-4">
-                <p-button icon="pi pi-arrow-left ml-[-28px]" styleClass="text-white text-center" />
-                <div class="text-[#CECBDE] text-sm">
-                    <p class="poppins-bold">Add User</p>
-                    <p class="poppins-regular">Organization</p>
-                </div>
-            </div>
-            <div class="flex items-center gap-2.5">
-                <p-button icon="pi pi-times" label="Cancel" styleClass="action-btn text-[#CECBDE] text-sm px-3 py-[14px]" />
-                <p-button type="submit" icon="pi pi-check" label="Save" styleClass="action-btn text-[#1E1E1E] bg-[#60BE7A] px-3 py-[14px] text-sm" />
-            </div>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="w-full">
+  <div class="px-4">
+    <app-action-bar (onResetForm)="resetFormHandler()"></app-action-bar>
+    <div>
+      <div class="flex flex-col gap-[15px] w-full max-w-[653px] mx-auto pb-10">
+        <app-img-uploader
+          [img]="img"
+          (imageUpdated)="onImageUpdate($event)"
+        ></app-img-uploader>
+        <div class="flex flex-col lg:flex-row items-start gap-[15px]">
+          <div class="flex flex-col gap-1 w-full lg:w-1/3">
+            <label
+              for="firstname"
+              class="text-[13px] text-[#9E9BAD] mb-[5px]"
+              >First Name <sup class="text-[#FF3F69] align-sub">*</sup></label
+            >
+            <input
+              pInputText
+              type="text"
+              id="firstname"
+              placeholder="First Name"
+              minlength="3"
+              formControlName="firstname"
+              class="border border-solid border-transparent h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] px-[15px] w-full"
+              [class.p-invalid]="isInvalid('firstname')"
+            />
+            @if (isInvalid('firstname')) { @if
+            (form.get('firstname')?.errors?.['required']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="First name is required."
+            ></p-message>
+            } @if (form.get('firstname')?.errors?.['minlength']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="First name must be at least 3 characters."
+            ></p-message>
+            } }
+          </div>
+          <div class="flex flex-col gap-1 w-full lg:w-1/3">
+            <label
+              for="middleName"
+              class="text-[13px] text-[#9E9BAD] mb-[5px]"
+              >Middle Name</label
+            >
+            <input
+              pInputText
+              type="text"
+              id="middleName"
+              placeholder="Middle Name"
+              formControlName="middleName"
+              class="border border-solid border-transparent h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] px-[15px] w-full"
+            />
+          </div>
+          <div class="flex flex-col gap-1 w-full lg:w-1/3">
+            <label
+              for="lastName"
+              class="text-[13px] text-[#9E9BAD] mb-[5px]"
+              >Last Name <sup class="text-[#FF3F69] align-sub">*</sup></label
+            >
+            <input
+              pInputText
+              type="text"
+              id="lastName"
+              placeholder="Last Name"
+              formControlName="lastName"
+              class="border border-solid border-transparent h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] px-[15px] w-full"
+              [class.p-invalid]="isInvalid('lastName')"
+            />
+            @if (isInvalid('lastName')) { @if
+            (form.get('lastName')?.errors?.['required']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="Last name is required."
+            ></p-message>
+            } @if (form.get('lastName')?.errors?.['minlength']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="Last name must be at least 3 characters."
+            ></p-message>
+            } }
+          </div>
         </div>
-        <div>
+        <div class="flex items-center gap-[15px]">
+          <div class="flex flex-col gap-1 w-full">
+            <label
+              for="email"
+              class="text-[13px] text-[#9E9BAD] mb-[5px]"
+              >Email <sup class="text-[#FF3F69] align-sub">*</sup></label
+            >
+            <p-inputGroup
+              class="border border-solid border-transparent rounded-[10px]"
+              [class.p-invalid]="isInvalid('email')"
+            >
+              <p-inputGroupAddon
+                class="bg-[#1F1D2B] rounded-l-[10px] pl-[25px] pr-0"
+              >
+                <i class="pi pi-envelope text-[#CECBDE]"></i>
+              </p-inputGroupAddon>
+              <input
+                pInputText
+                type="email"
+                email
+                id="email"
+                placeholder="Email"
+                formControlName="email"
+                class="h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] w-full rounded-l-none pl-3 pr-[15px]"
+              />
+            </p-inputGroup>
 
-
-            <div class="flex flex-col gap-[15px] w-full max-w-[653px] mx-auto pb-10">
-                <div class="pb-[60px] mx-auto">
-                    <p-avatar
-                    [image]="img"
-                    styleClass="w-[200px] h-[200px] rounded-[15px]"
-                    ></p-avatar>
-
-
-                    <div class="pt-[15px] text-center">
-                        <p-button icon="pi pi-camera" class="uploader" styleClass="text-[#CECBDE] text-sm bg-[#1F1D2B] [box-shadow:0px_1px_1px_0px_#02001799] rounded-[10px] py-5 px-[13px]" label="Update Image" (onClick)="fileUplaoder.click();" />
-                        <input class="hidden" type="file" #fileUplaoder [accept]="acceptTemp.str" (change)="selectFile($event);fileUplaoder.value = ''" />
-                    </div>
-
-                </div>
-                <div class="flex flex-col lg:flex-row items-center gap-[15px]">
-                    <div class="flex flex-col gap-1 w-full lg:w-1/3">
-                        <label for="firstname" class="text-[13px] poppins-regular text-[#9E9BAD] mb-[5px]">First Name <sup class="text-[#FF3F69] align-sub">*</sup></label>
-                        <input pInputText type="text" id="firstname" placeholder="First Name" formControlName="firstname" class="border border-solid border-transparent h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] poppins-regular px-[15px] w-full shadow-none" [class.p-invalid]="isInvalid('firstname')" />            
-                        @if (isInvalid('firstname')) {
-                            <p-message severity="error" size="small" variant="simple" text="First name is required."></p-message>
-                        }
-                    </div>
-                    <div class="flex flex-col gap-1 w-full lg:w-1/3">
-                        <label for="middleName" class="text-[13px] poppins-regular text-[#9E9BAD] mb-[5px]">Middle Name</label>
-                        <input pInputText type="text" id="middleName" placeholder="Middle Name" formControlName="middleName" class="border border-solid border-transparent h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] poppins-regular px-[15px] w-full shadow-none" [class.p-invalid]="isInvalid('middleName')" />            
-                        @if (isInvalid('middleName')) {
-                            <p-message severity="error" size="small" variant="simple" text="Middle name is required."></p-message>
-                        }
-                    </div>
-                    <div class="flex flex-col gap-1 w-full lg:w-1/3">
-                        <label for="lastName" class="text-[13px] poppins-regular text-[#9E9BAD] mb-[5px]">Last Name <sup class="text-[#FF3F69] align-sub">*</sup></label>
-                        <input pInputText type="text" id="lastName" placeholder="Last Name" formControlName="lastName" class="border border-solid border-transparent h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] poppins-regular px-[15px] w-full shadow-none" [class.p-invalid]="isInvalid('lastName')" />            
-                        @if (isInvalid('lastName')) {
-                            <p-message severity="error" size="small" variant="simple" text="Last name is required."></p-message>
-                        }
-                    </div>
-                </div>
-                <div class="flex items-center gap-[15px]">
-                    <div class="flex flex-col gap-1 w-full">
-                        <label for="email" class="text-[13px] poppins-regular text-[#9E9BAD] mb-[5px]">Email <sup class="text-[#FF3F69] align-sub">*</sup></label>
-                        <p-inputGroup class="border border-solid border-transparent rounded-[10px]" [class.p-invalid]="isInvalid('email')">
-                            <p-inputGroupAddon class="bg-[#1F1D2B] rounded-l-[10px] pl-[25px] pr-0">
-                                <i class="pi pi-envelope text-[#CECBDE]"></i>
-                            </p-inputGroupAddon>
-                            <input pInputText type="email" email id="email" placeholder="Email" formControlName="email" class="h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] poppins-regular w-full rounded-l-none shadow-none pl-3 pr-[15px]" />
-                        </p-inputGroup>
-
-
-                        @if (isInvalid('email')) {
-                            @if (exampleForm.get('email')?.errors?.['required']) {
-                                <p-message severity="error" size="small" variant="simple" text="Email is required."></p-message>
-                            }
-                            @if (exampleForm.get('email')?.errors?.['email']) {
-                                <p-message severity="error" size="small" variant="simple" text="Please enter a valid email."></p-message>
-                            }
-                        }
-                    </div>
-                </div>
-                <div class="flex items-center gap-[15px]">
-                    <div class="flex flex-col gap-1 w-full">
-                        <label for="phone" class="text-[13px] poppins-regular text-[#9E9BAD] mb-[5px]">Phone</label>
-                        <p-inputGroup class="border border-solid border-transparent rounded-[10px]" [class.p-invalid]="isInvalid('phone')">
-                            <p-inputGroupAddon class="bg-[#1F1D2B] rounded-l-[10px] pl-[25px] pr-0">
-                                <i class="pi pi-envelope text-[#CECBDE]"></i>
-                            </p-inputGroupAddon>
-                            <input pInputText type="tel" id="phone" placeholder="Phone" formControlName="phone" class="h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] poppins-regular w-full rounded-l-none shadow-none pl-3 pr-[15px]" />
-                        </p-inputGroup>
-
-
-                        @if (isInvalid('phone')) {
-                            <p-message severity="error" size="small" variant="simple" text="Phone is required."></p-message>
-                        }
-                    </div>
-                </div>
-
-                <div class="flex flex-col gap-[15px]">
-                    <div class="flex items-center gap-[15px]">
-                        <div class="flex items-center gap-3 w-full">
-                            <label for="rfid" class="text-[13px] poppins-regular text-[#9E9BAD]">RFI D</label>
-                            <p-inputSwitch class="h-[21px]" styleClass="shadow-none" name="rfid" formControlName="rfid" />
-                        </div>
-                    </div>
-                    <div *ngIf="exampleForm.get('rfid')?.value" class="flex flex-col gap-1 w-full">
-                        <input pInputText type="text" id="rfidText" placeholder="RFID" formControlName="rfidText" class="border border-solid border-transparent h-14 rounded-[10px] bg-[#1F1D2B66] text-[#CECBDE] poppins-regular px-[15px] w-full shadow-none" [class.p-invalid]="isInvalid('rfidText')" />            
-                        @if (isInvalid('rfidText')) {
-                            <p-message severity="error" size="small" variant="simple" text="RFID is required."></p-message>
-                        }
-                    </div>
-                </div>                
-
-                <div class="flex items-center gap-[15px]">
-                    <div class="flex flex-col gap-1 w-full">
-                        <label for="role" class="text-[13px] poppins-regular text-[#9E9BAD] mb-[5px]">Role <sup class="text-[#FF3F69] align-sub">*</sup></label>
-                        <p-dropdown [styleClass]="(isInvalid('role') ? 'p-invalid ' : '') + ' poppins-regular text-sm shadow-none bg-[#1F1D2B] w-full py-[14px] rounded-[10px] border border-solid border-transparent'"
-                            [options]="roles" 
-                            formControlName="role" 
-                            placeholder="Select a Role">
-                        </p-dropdown>
-                        @if (isInvalid('role')) {
-                            <p-message severity="error" size="small" variant="simple" text="Role is required."></p-message>
-                        }
-                    </div>
-                </div>
-                <div class="flex items-center gap-[15px]">
-                    <div class="flex flex-col gap-1 w-full">
-                        <label for="department" class="text-[13px] poppins-regular text-[#9E9BAD] mb-[5px]">Department <sup class="text-[#FF3F69] align-sub">*</sup></label>
-                        <p-dropdown [styleClass]="(isInvalid('department') ? 'p-invalid ' : '') + ' poppins-regular text-sm shadow-none bg-[#1F1D2B] w-full py-[14px] rounded-[10px] border border-solid border-transparent'"
-                            [options]="departments" 
-                            formControlName="department" 
-                            placeholder="Select a Department">
-                        </p-dropdown>
-                        @if (isInvalid('department')) {
-                            <p-message severity="error" size="small" variant="simple" text="Department is required."></p-message>
-                        }
-                    </div>
-                </div>
-            </div>
-
-
+            @if (isInvalid('email')) { @if
+            (form.get('email')?.errors?.['required']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="Email is required."
+            ></p-message>
+            } @if (form.get('email')?.errors?.['email']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="Please enter a valid email."
+            ></p-message>
+            } }
+          </div>
         </div>
+        <div class="flex items-center gap-[15px]">
+          <div class="flex flex-col gap-1 w-full">
+            <label
+              for="phone"
+              class="text-[13px] text-[#9E9BAD] mb-[5px]"
+              >Phone</label
+            >
+            <p-inputGroup
+              class="border border-solid border-transparent rounded-[10px]"
+              [class.p-invalid]="isInvalid('phone')"
+            >
+              <p-inputGroupAddon
+                class="bg-[#1F1D2B] rounded-l-[10px] pl-[25px] pr-0"
+              >
+                <i class="pi pi-envelope text-[#CECBDE]"></i>
+              </p-inputGroupAddon>
+              <input
+                pInputText
+                type="tel"
+                id="phone"
+                placeholder="Phone"
+                formControlName="phone"
+                class="h-14 rounded-[10px] bg-[#1F1D2B] text-[#CECBDE] w-full rounded-l-none pl-3 pr-[15px]"
+              />
+            </p-inputGroup>
+            @if (isInvalid('phone')) { @if
+            (form.get('phone')?.errors?.['required']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="Phone is required."
+            ></p-message>
+            } @if (form.get('phone')?.errors?.['minlength']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="Phone must be at least 8 digits."
+            ></p-message>
+            } }
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-[15px]">
+          <div class="flex items-center gap-[15px]">
+            <div class="flex items-center gap-3 w-full">
+              <label
+                for="rfid"
+                class="text-[13px] text-[#9E9BAD]"
+                >RFI D</label
+              >
+              <p-inputSwitch
+                class="h-[21px] switch-btn-style-1"
+                styleClass="shadow-none"
+                name="rfid"
+                formControlName="rfid"
+              />
+            </div>
+          </div>
+          <div
+            *ngIf="form.get('rfid')?.value"
+            class="flex flex-col gap-1 w-full"
+          >
+            <input
+              pInputText
+              type="text"
+              id="rfidText"
+              placeholder="RFID"
+              formControlName="rfidText"
+              class="border border-solid border-transparent h-14 rounded-[10px] bg-[#1F1D2B66] text-[#CECBDE] px-[15px] w-full"
+              [class.p-invalid]="isInvalid('rfidText')"
+            />
+            @if (isInvalid('rfidText')) { @if
+            (form.get('rfidText')?.errors?.['required']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="RFID is required."
+            ></p-message>
+            } @if (form.get('rfidText')?.errors?.['minlength']) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="RFID must be at least 3 characters."
+            ></p-message>
+            } }
+          </div>
+        </div>
+
+        <div class="flex items-center gap-[15px]">
+          <div class="flex flex-col gap-1 w-full">
+            <label
+              for="role"
+              class="text-[13px] text-[#9E9BAD] mb-[5px]"
+              >Role <sup class="text-[#FF3F69] align-sub">*</sup></label
+            >
+            <p-dropdown
+              class="ddl-style-1"
+              [styleClass]="
+                (isInvalid('role') ? 'p-invalid ' : '') +
+                ' text-sm shadow-none bg-[#1F1D2B] w-full py-[14px] rounded-[10px] border border-solid border-transparent'
+              "
+              [options]="roles"
+              formControlName="role"
+              placeholder="Select a Role"
+            >
+            </p-dropdown>
+            @if (isInvalid('role')) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="Role is required."
+            ></p-message>
+            }
+          </div>
+        </div>
+        <div class="flex items-center gap-[15px]">
+          <div class="flex flex-col gap-1 w-full">
+            <label
+              for="department"
+              class="text-[13px] text-[#9E9BAD] mb-[5px]"
+              >Department <sup class="text-[#FF3F69] align-sub">*</sup></label
+            >
+            <p-dropdown
+              class="ddl-style-1"
+              [styleClass]="
+                (isInvalid('department') ? 'p-invalid ' : '') +
+                ' text-sm shadow-none bg-[#1F1D2B] w-full py-[14px] rounded-[10px] border border-solid border-transparent'
+              "
+              [options]="departments"
+              formControlName="department"
+              placeholder="Select a Department"
+            >
+            </p-dropdown>
+            @if (isInvalid('department')) {
+            <p-message
+              severity="error"
+              size="small"
+              variant="simple"
+              text="Department is required."
+            ></p-message>
+            }
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </form>

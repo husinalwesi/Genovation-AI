@@ -1,0 +1,11 @@
+<div class="flex items-center gap-5 px-[15px] pb-5">
+    <app-user-time></app-user-time>
+    <div>
+        <p class="text-[#CECBDE] poppins-bold text-sm">{{data.shiftTitle}}</p>
+        <p class="text-[#CECBDE] text-sm">{{data.time}}</p>
+    </div>
+</div>
+
+<div class="pb-[60px]">
+    <app-table [tableBody]="data.table"></app-table>
+</div>

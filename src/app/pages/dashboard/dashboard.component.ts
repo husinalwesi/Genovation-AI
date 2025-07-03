@@ -1,22 +1,18 @@
 import { Component } from '@angular/core';
-import { DoughnutChartComponent } from "../../modules/components/doughnut-chart/doughnut-chart.component";
-import { CounterComponent } from "../../modules/components/counter/counter.component";
-import { InputGroupModule } from 'primeng/inputgroup';
-import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
-import { ButtonModule } from 'primeng/button';
-import { UserTimeComponent } from "../../modules/icons/user-time/user-time.component";
-import { TableComponent } from "../../modules/components/table/table.component";
 import { SharedService } from '../../serives/shared.service';
+import { ShiftsSectionComponent } from "../../modules/components/shifts-section/shifts-section.component";
+import { ChartsComponent } from "../../modules/components/charts/charts.component";
+import { DoughnutChartData, CounterData, ShiftData, VehicleTableRow } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [DoughnutChartComponent, CounterComponent, InputGroupModule, InputGroupAddonModule, ButtonModule, UserTimeComponent, TableComponent],
+  imports: [ShiftsSectionComponent, ChartsComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
-  doughnutCharts: any = [
+  doughnutCharts: DoughnutChartData[] = [
     {
       value: 300,
       outOf: 302,
@@ -34,7 +30,7 @@ export class DashboardComponent {
     }    
   ];
 
-  counters: any = [
+  counters: CounterData[] = [
     {
       value: 2,
       label: 'In-Active Trips'
@@ -60,8 +56,30 @@ export class DashboardComponent {
       label: 'Total Drivers'
     }
   ];  
-  isExpanded: boolean = true;
-  isMobile: boolean = true;
+
+  totalCounters: CounterData[] = [
+    {
+      value: '43,303 km',
+      label: 'Total Distance Driven'
+    },
+    {
+      value: '291 hr : 23 min',
+      label: 'Total Hours Driven'
+    },
+  ];
+
+  shifts: ShiftData[] = [
+    {
+      shiftTitle: 'Afternoon Shift',
+      time: '12:00 PM - 08:00 PM',
+      table: this.getMockTableData()
+    },
+    {
+      shiftTitle: 'Afternoon Shift',
+      time: '12:00 PM - 08:00 PM',
+      table: this.getMockTableData()
+    }    
+  ];
 
   constructor(
     private sharedService: SharedService
@@ -70,10 +88,22 @@ export class DashboardComponent {
   }
 
   ngOnInit(): void{
-    this.sharedService.sidebar$.subscribe((data: any) => {
-      this.isExpanded = data.isExpanded;
-      this.isMobile = data.isMobile;
-    });
   }
+
+  private getMockTableData(): VehicleTableRow[] {
+    return Array.from({ length: 5 }, () => ({
+      vehicleType: 'SUV',
+      vehicle: 'Bus-9265',
+      vehicleLink: '/report',
+      plateNum: '04321',
+      odometer: '55,956 KM',
+      gps: '3-Nov-2024 &nbsp; 13:05:50',
+      device: 'Teltonika',
+      deviceNo: 'C03-96321',
+      sim: 'Allowance \n 1.5GB',
+      fleet: 'Q22',
+      status: 'Active'
+    }));
+  }  
 
 }

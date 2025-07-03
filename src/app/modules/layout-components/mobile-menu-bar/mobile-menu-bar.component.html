@@ -1,19 +1,19 @@
-<div class="lg-exclude-ipad:hidden fixed w-full z-10">
+<div class="lg-exclude-ipad:hidden fixed w-full z-20">
   <p-menubar styleClass="bg-[#10141A] py-[19px] px-[15px] rounded-none shadow-[16px_0px_30px_0px_#00000033]">
     <ng-template pTemplate="start">
       <div class="flex items-center gap-[30px]">
       <p-image src="images/logo/mobile-en.png" alt="Image" width="64" height="60" class="w-16 h-[60px]" />
         <div class="flex items-center gap-[5px] flex-1">
-          <p-chip *ngIf="metaData?.icon" styleClass="w-12 h-12 rounded-[15px] bg-[#00C5D6] text-[#252836] justify-center">
-            <ng-container *ngComponentOutlet="mapper[metaData?.icon]"></ng-container>
+          <p-chip *ngIf="metaData?.icon" styleClass="page-icon w-12 h-12 rounded-[15px] bg-[#00C5D6] text-[#252836] justify-center">
+            <ng-container *ngComponentOutlet="mapper?.[metaData?.icon || '']"></ng-container>
           </p-chip>
-          <span class="text-[#00C5D6] Poppins font-bold text-xs poppins-bold line-clamp-2" style="word-break: break-word;">{{metaData?.label}}</span>
+          <span class="text-[#00C5D6] Poppins font-bold text-xs poppins-bold line-clamp-2 break-words">{{metaData['label'] || ''}}</span>
         </div>
       </div>
     </ng-template>
     <ng-template pTemplate="end">
       <div class="flex items-center gap-[30px]">
-        <p-avatar
+        <p-avatar class="user-icon-mobile"
           image="images/users/john-doe.png"
           styleClass="w-10 h-10 rounded-[15px] border-2 border-solid border-[#464353]"
         ></p-avatar>

@@ -1,0 +1,23 @@
+<div class="pb-[60px] text-center">
+  <p-avatar
+    [image]="img"
+    styleClass="w-[200px] h-[200px] rounded-[15px] object-cover shadow-md"
+    shape="square"
+  ></p-avatar>
+
+  <div class="pt-[15px] flex justify-center">
+    <p-button
+      icon="pi pi-camera"
+      styleClass="uploader text-[#CECBDE] text-sm bg-[#1F1D2B] shadow-md rounded-[10px] py-5 px-4 hover:bg-[#2B2A3A] transition-colors duration-300"
+      label="Update Image"
+      (onClick)="fileUploader.click()"
+    />
+    <input
+      class="hidden"
+      type="file"
+      #fileUploader
+      [accept]="allowedTypes.join()"
+      (change)="onFileChange($event)"
+    />
+  </div>
+</div>

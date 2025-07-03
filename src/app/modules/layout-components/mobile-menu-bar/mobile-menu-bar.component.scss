@@ -1,7 +1,8 @@
-::ng-deep p-avatar img{
+::ng-deep {
+  & .user-icon-mobile img {
     @apply object-cover w-full h-full rounded-[15px];
-}
-
-::ng-deep p-chip svg .svg-fill{
+  }
+  & .page-icon svg .svg-fill {
     @apply fill-[#252836];
+  }
 }

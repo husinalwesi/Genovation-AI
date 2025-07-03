@@ -8,7 +8,7 @@
                 ></p-avatar>
                 <div class="user-details">
                     <p class="text-sm text-[#CECBDE] poppins-bold">{{item.userData.name}}</p>
-                    <p class="text-sm text-[#CECBDE] poppins-regular">{{item.userData.role}}</p>
+                    <p class="text-sm text-[#CECBDE]">{{item.userData.role}}</p>
                 </div>
             </div>
             <div *ngIf="!item.isSpecialItem && item.title" class="sub-menu-title poppins-semibold text-base text-[#CECBDE] h-[69px] border-t border-b border-solid border-[#464353] rounded-tr-[15px] items-center px-[11px]">
@@ -18,7 +18,7 @@
                 <p-chip class="menu-item-main-icon" styleClass="w-8 h-8 rounded-[10px] transition-all bg-[#252836] text-[#252836] justify-center">
                     <ng-container *ngComponentOutlet="mapper[item.icon]"></ng-container>
                 </p-chip>
-                <span class="poppins-regular text-[13px] text-[#706D7E] transition-all menu-item-label">
+                <span class="text-[13px] text-[#706D7E] transition-all menu-item-label poppins-regular">
                     {{ item.label }}
                 </span>
                 <i *ngIf="item.items" class="menu-item-arrow pi pi-angle-down text-[#706D7E] ml-auto transition-all"></i>

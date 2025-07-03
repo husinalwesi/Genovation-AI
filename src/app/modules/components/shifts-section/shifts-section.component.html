@@ -1,0 +1,22 @@
+<div class="lg-exclude-ipad:hidden">
+    <p class="text-lg text-[#CECBDE] poppins-bold pt-[54px]">Shifts</p>
+</div>
+<div class="flex items-center gap-[15px] pt-[15px] lg-exclude-ipad:pt-[30px] pb-[60px] lg-exclude-ipad:pb-5">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-right w-full">
+        <p-inputGroup>
+            <p-inputGroupAddon class="bg-[#1F1D2B] rounded-l-[10px] p-0">
+                <p-button styleClass="p-[10.5px] ml-[5px] pr-2.5" type="submit">
+                    <i class="pi pi-search text-[19px] text-[#CECBDE]"></i>
+                </p-button>
+            </p-inputGroupAddon>
+            <input pInputText placeholder="Search" formControlName="search" class="bg-[#1F1D2B] text-sm placeholder:text-[#706D7E] text-[#CECBDE] outline-0 rounded-r-[10px] w-full" />
+        </p-inputGroup>
+    </form>
+
+    <p-button icon="pi pi-download" label="Export" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
+    <p-button icon="pi pi-upload" label="Import" class="download-upload-action-btns" styleClass="text-white text-sm text-[#CECBDE] [box-shadow:0px_1px_1px_0px_#02001799] bg-[#252836] p-2.5 rounded-[10px] w-10 lg-exclude-ipad:w-auto h-10 lg-exclude-ipad:h-auto justify-center" />
+</div>
+
+@for (shift of shifts; track $index) {
+    <app-shift-details [data]="shift" class="block mb-[60px] border-b border-[#464353] border-dashed last:mb-0 last:border-b-0"></app-shift-details>
+}

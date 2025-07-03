@@ -1,0 +1,17 @@
+<div class="flex flex-wrap items-center gap-4 xl:justify-between xl:flex-nowrap">
+    @for (item of doughnutCharts; track $index) {
+        <div class="w-[calc((100%/3)-11px)] xl:w-[calc(100%/9)]">
+            <app-doughnut-chart [input]="item"></app-doughnut-chart>
+        </div>
+    }
+    @for (item of counters; track $index) {
+        <div class="w-[calc((100%/3)-11px)] lg-exclude-ipad:w-[calc((100%/6)-14px)] xl:w-[calc(100%/9)]">
+            <app-counter [input]="item"></app-counter>
+        </div>
+    }
+    @for (item of totalCounters; track $index) {
+        <div class="w-[calc((100%/2)-8px)] lg:hidden">
+            <app-counter [input]="item"></app-counter>
+        </div>
+    }
+</div>

@@ -1,0 +1,8 @@
+::ng-deep .download-upload-action-btns {
+  & .p-button-label {
+    @apply hidden lg-exclude-ipad:inline-block;
+  }
+  & .p-button-icon {
+    @apply mr-0 lg-exclude-ipad:mr-3;
+  }
+}

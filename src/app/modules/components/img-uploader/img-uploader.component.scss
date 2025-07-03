@@ -1,0 +1,9 @@
+::ng-deep .uploader {
+  .p-button-label {
+    @apply poppins-regular;
+  }
+
+  .p-button-icon {
+    @apply mr-[18px];
+  }
+}
