@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
+import { ImageModule } from 'primeng/image';
 
 @Component({
   selector: 'app-img-uploader',
   standalone: true,
-  imports: [AvatarModule, ButtonModule],
+  imports: [ButtonModule, ImageModule],
   templateUrl: './img-uploader.component.html',
   styleUrl: './img-uploader.component.scss'
 })

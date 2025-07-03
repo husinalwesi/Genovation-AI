@@ -1,37 +1,92 @@
-<div id="menu-items" class="h-full" [class.collapsed-sidebar]="collapsedSidebar">
-<p-panelMenu [model]="items" class="w-full h-full block" styleClass="">
-        <ng-template pTemplate="item" let-item>
-            <div *ngIf="item.isSpecialItem" class="flex items-center gap-[15px] px-10 lg-exclude-ipad:px-[15px] pb-[25px] lg-exclude-ipad:pb-[30px] user-container">
-                <p-avatar
-                [image]="item.userData.img"
-                styleClass="w-10 h-10 rounded-[15px] border-2 border-solid border-[#464353] user-img"
-                ariaLabel="User image"
-                ></p-avatar>
-                <div class="user-details">
-                    <p class="text-sm text-[#CECBDE] poppins-bold">{{item.userData.name}}</p>
-                    <p class="text-sm text-[#CECBDE]">{{item.userData.role}}</p>
-                </div>
-            </div>
-            <div *ngIf="!item.isSpecialItem && item.title" class="sub-menu-title poppins-semibold text-base text-[#CECBDE] h-[69px] border-t border-b border-solid border-[#464353] rounded-tr-[15px] items-center px-[11px]">
-                {{item.title}}
-            </div>
-            <a *ngIf="!item.isSpecialItem && !item.title" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: item.route === '/'}" [routerLink]="item.route" [attr.href]="item.route" (click)="closeMobileMenu(item.route)" [class.submenu-items]="item.items" class="menu-item flex items-center gap-5 px-10 lg-exclude-ipad:pl-[15px] lg-exclude-ipad:pr-[13px] py-[3px] cursor-pointer group">
-                <p-chip class="menu-item-main-icon" styleClass="w-8 h-8 rounded-[10px] transition-all bg-[#252836] text-[#252836] justify-center">
-                    <ng-container *ngComponentOutlet="mapper[item.icon]"></ng-container>
-                </p-chip>
-                <span class="text-[13px] text-[#706D7E] transition-all menu-item-label poppins-regular">
-                    {{ item.label }}
-                </span>
-                <i *ngIf="item.items" class="menu-item-arrow pi pi-angle-down text-[#706D7E] ml-auto transition-all"></i>
+<div
+  id="menu-items"
+  class="h-full"
+  [class.collapsed-sidebar]="collapsedSidebar"
+>
+  <p-panelMenu [model]="items" class="w-full h-full block" styleClass="">
+    <ng-template pTemplate="item" let-item>
+      <div
+        *ngIf="item.isSpecialItem"
+        class="flex items-center gap-[15px] px-10 lg-exclude-ipad:px-[15px] pb-[25px] lg-exclude-ipad:pb-[30px] user-container"
+      >
+        <p-image
+          [src]="item.userData.img"
+          alt="User image"
+          width="40"
+          height="40"
+          class="w-10 h-10 rounded-[15px] border-2 border-solid border-[#464353] user-img-container"
+        />
 
+        <div class="user-details">
+          <p class="text-sm text-[#CECBDE] poppins-bold">
+            {{ item.userData.name }}
+          </p>
+          <p class="text-sm text-[#CECBDE]">{{ item.userData.role }}</p>
+        </div>
+      </div>
+      <div
+        *ngIf="!item.isSpecialItem && item.title"
+        class="sub-menu-title poppins-semibold text-base text-[#CECBDE] h-[69px] border-t border-b border-solid border-[#464353] rounded-tr-[15px] items-center px-[11px]"
+      >
+        {{ item.title }}
+      </div>
+      <ng-template #menuContent>
+        <p-chip
+          class="menu-item-main-icon"
+          styleClass="w-8 h-8 rounded-[10px] transition-all bg-[#252836] text-[#252836] justify-center"
+        >
+          <ng-container *ngComponentOutlet="mapper[item.icon]"></ng-container>
+        </p-chip>
+        <span
+          class="text-[13px] text-[#706D7E] transition-all menu-item-label poppins-regular"
+        >
+          {{ item.label }}
+        </span>
+        <i
+          *ngIf="item.items"
+          class="menu-item-arrow pi pi-angle-down text-[#706D7E] ml-auto transition-all"
+        ></i>
+        <button
+          aria-label="Plus"
+          type="button"
+          *ngIf="item.extraIconRoute"
+          (click)="naviagateInnerURL($event, item.extraIconRoute)"
+          class="ml-auto"
+        >
+          <p-chip
+            *ngIf="item.extraIcon"
+            styleClass="w-7 h-7 rounded-lg bg-[#00C5D6] justify-center"
+          >
+            <i class="text-[16.5px] text-white" [ngClass]="item.extraIcon"></i>
+          </p-chip>
+        </button>
+      </ng-template>
 
-                <button aria-label="Plus" type="button" *ngIf="item.extraIconRoute" (click)="naviagateInnerURL($event, item.extraIconRoute)" class="ml-auto">
-                    <p-chip *ngIf="item.extraIcon" styleClass="w-7 h-7 rounded-lg bg-[#00C5D6] justify-center">
-                        <i class="text-[16.5px] text-white" [ngClass]="item.extraIcon"></i>
-                    </p-chip>                    
-                </button>
+      <ng-container *ngIf="item.route; else noLink">
+        <a
+          *ngIf="!item.isSpecialItem && !item.title"
+          routerLinkActive="active-link"
+          [routerLinkActiveOptions]="{ exact: item.route === '/' }"
+          [routerLink]="item.route"
+          [attr.href]="item.route"
+          (click)="closeMobileMenu(item.route)"
+          [class.submenu-items]="item.items"
+          class="menu-item flex items-center gap-5 px-10 lg-exclude-ipad:pl-[15px] lg-exclude-ipad:pr-[13px] py-[3px] cursor-pointer group"
+        >
+          <ng-container *ngTemplateOutlet="menuContent"></ng-container>
+        </a>
+      </ng-container>
 
-            </a>
-        </ng-template>    
-    </p-panelMenu>
+      <ng-template #noLink>
+        <div
+          *ngIf="!item.isSpecialItem && !item.title"
+          (click)="closeMobileMenu('')"
+          [class.submenu-items]="item.items"
+          class="menu-item flex items-center gap-5 px-10 lg-exclude-ipad:pl-[15px] lg-exclude-ipad:pr-[13px] py-[3px] cursor-pointer group"
+        >
+          <ng-container *ngTemplateOutlet="menuContent"></ng-container>
+        </div>
+      </ng-template>
+    </ng-template>
+  </p-panelMenu>
 </div>

@@ -8,9 +8,9 @@ import { DashboardComponent } from '../../icons/dashboard/dashboard.component';
 import { OrganizationComponent } from '../../icons/organization/organization.component';
 import { ReportComponent } from '../../icons/report/report.component';
 import { UsersComponent } from '../../icons/users/users.component';
-import { AvatarModule } from 'primeng/avatar';
 import { Router } from '@angular/router';
 import { InvoicesComponent } from '../../icons/invoices/invoices.component';
+import { ImageModule } from 'primeng/image';
 
 export const componentMapper: { [key: string]: any } = {
   dashboard: DashboardComponent,
@@ -23,7 +23,7 @@ export const componentMapper: { [key: string]: any } = {
 @Component({
   selector: 'app-menu-items',
   standalone: true,
-  imports: [CommonModule, PanelMenuModule, BadgeModule, ChipModule, AvatarModule],
+  imports: [CommonModule, PanelMenuModule, BadgeModule, ChipModule, ImageModule],
   templateUrl: './menu-items.component.html',
   styleUrl: './menu-items.component.scss'
 })

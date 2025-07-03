@@ -1,9 +1,15 @@
-::ng-deep .uploader {
-  .p-button-label {
-    @apply poppins-regular;
+::ng-deep{
+  & .uploader {
+    .p-button-label {
+      @apply poppins-regular;
+    }
+
+    .p-button-icon {
+      @apply mr-[18px];
+    }
   }
 
-  .p-button-icon {
-    @apply mr-[18px];
+  & .user-img img{
+    @apply mx-auto;
   }
 }
